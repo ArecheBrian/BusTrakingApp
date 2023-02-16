@@ -1,9 +1,11 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { Navigation } from "./src/navigation/Navigation";
-
+import { DrawerNavigation, Navigation } from "./src/navigation/Navigation";
 
 export default function App() {
   return (
-    <Navigation/>
-  );
+  <NavigationContainer>
+    <DrawerNavigation/>
+  </NavigationContainer>
+  )
 }
