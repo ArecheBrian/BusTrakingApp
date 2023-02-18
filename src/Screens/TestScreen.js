@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export const TestScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Test</Text>
+      <Text>Testing</Text>
       <StatusBar style="auto" />
     </View>
   );

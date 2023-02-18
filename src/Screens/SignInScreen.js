@@ -61,27 +61,6 @@ export const SignInScreen =()=> {
       <StatusBar style="auto" />
       
       
-      {/* <TouchableOpacity
-        onPress={()=> navigation.navigate("Home")}
-        
-        style={{
-            padding: 10,
-            backgroundColor: "blue",
-            marginTop: "10%",
-            width: "100%",
-            borderRadius: 10
-        }}>
-            <Text
-                style={{
-                    fontSize: 15,
-                    textAlign: "center",
-                    color: "white"
-                }}
-            >Sign In</Text>
-       
-       </TouchableOpacity> */}
-
-
     </View>
   );
 }
