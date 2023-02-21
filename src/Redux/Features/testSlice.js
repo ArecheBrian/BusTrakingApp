@@ -7,7 +7,7 @@ const nameSlice = createSlice({
     },
     reducers: {
         addApellido:(state,action) => {
-            state.name += "areche minaya"
+            state.name += " javier areche minaya"
         }
     }
 })
