@@ -1,4 +1,4 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { HomeScreen } from "../Screens/HomeScreen";
 import { TestScreen } from "../Screens/TestScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
@@ -20,10 +20,23 @@ const MyTabs = () => {
   )
 }
 
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem label="Log Out" onPress={() => alert('Salir')} />
+    </DrawerContentScrollView>
+  );
+}
+
 const MyDrawer = () => {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator initialRouteName="HomeD">
+    <Drawer.Navigator 
+      initialRouteName="HomeD"
+      useLegacyImplementation
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen name="HomeD" component={MyTabs} />
     </Drawer.Navigator>
   );
