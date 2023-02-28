@@ -1,4 +1,4 @@
-import { Box, VStack, Input, Heading, useColorModeValue, HStack, Circle, Center, Icon } from "native-base"
+import { Box, Input, Heading, HStack, Circle, Center, Icon } from "native-base"
 import { Octicons, Ionicons } from '@expo/vector-icons';
 
 export const HomeHeader = () => {

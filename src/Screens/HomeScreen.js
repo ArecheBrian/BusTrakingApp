@@ -1,4 +1,4 @@
-import { VStack, ScrollView, Text, useColorModeValue, useSafeArea, StatusBar } from "native-base"
+import { VStack, useSafeArea } from "native-base"
 import { HomeHeader } from "../Components/HomeComponents/HomeHeader";
 import { HomeMap } from "../Components/HomeComponents/HomeMap";
 

@@ -1,4 +1,4 @@
-import { Box, VStack, Heading, HStack, Stack, Text, useColorModeValue, StatusBar, Center } from "native-base"
+import { Box, Heading, HStack } from "native-base"
 import { Ionicons} from '@expo/vector-icons';
 import MapView from "react-native-maps";
 import theme from "../../Constans/theme";
@@ -16,16 +16,6 @@ export const HomeMap = () => {
         <Box flex={1} w="full" overflow={"hidden"} rounded="3xl">
             <MapView style={{ width:"100%", height: "100%", borderRadius: 20}} />
         </Box>
-        {/* <VStack  w="full">
-            <Heading fontSize="lg">Current Location</Heading>
-            <HStack alignItems={"center"}>
-                <Ionicons name="md-location-sharp" size={18} color={theme.colors.gray[400]} />
-                <Heading fontSize="xs" color={"gray.400"}>Santo Domingo</Heading>
-            </HStack>
-        </VStack>
-        <Box w="full" h={[16, 28, 22]} bg="gray.200" rounded="3xl" overflow={"hidden"} >
-            <MapView style={{ width:"100%", height: "100%", borderRadius: 20}} />
-        </Box> */}
     </Box>
     )
 }
