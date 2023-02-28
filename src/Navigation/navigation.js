@@ -37,7 +37,9 @@ const MyDrawer = () => {
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="HomeD" component={MyTabs} />
+      <Drawer.Screen name="HomeD" component={MyTabs} options={{
+        headerShown: false
+      }} />
     </Drawer.Navigator>
   );
 }
@@ -49,11 +51,13 @@ const MyStack = () => {
             <Stack.Screen options={{title: "Welcome"}} name="Welcome" component={WelcomeScreen}/>
             <Stack.Screen name="SignIn" component={SignInScreen}/>
             <Stack.Screen name="Register" component={RegisterScreen}/>
-            <Stack.Screen name="Home" component={MyDrawer}/>
+            <Stack.Screen name="Home" component={MyDrawer} options={{
+              headerShown: false
+            }} />
         </Stack.Navigator>
     )
 }
-export const Navigation = () => {
+export const BusTrakingApp = () => {
     return (
         <NavigationContainer>
             <MyStack/>
