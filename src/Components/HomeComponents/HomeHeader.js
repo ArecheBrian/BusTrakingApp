@@ -6,8 +6,8 @@ export const HomeHeader = () => {
     <Box w={"90%"} flex={2} justifyContent={"space-evenly"}>
             <HStack justifyContent={"space-between"} alignItems="center">
                 <Heading pt={3} size="3xl" width={"48"} lineHeight={40}>Find  my Bus</Heading>
-                <Circle size={"sm"}>
-                <Icon as={<Ionicons name="notifications-outline"/>} color="white" size={"2xl"} />
+                <Circle size={"sm"} bg={"gray.400"}>
+                    <Icon as={<Ionicons name="notifications-outline"/>} color="white" size={"2xl"} />
                 </Circle>
             </HStack>
             <Center shadow={5} bg={"blueGray.50"}  width="96%" borderRadius="25">
