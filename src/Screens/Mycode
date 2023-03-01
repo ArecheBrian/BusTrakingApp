@@ -1,0 +1,141 @@
+import React from "react";
+import {
+  NativeBaseProvider,
+  Text,
+  Box,
+  HStack,
+  Image,
+  Divider,
+} from "native-base";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+export const PurTiketScreen = () => {
+  return (
+    <NativeBaseProvider>
+      {/* <Box bgColor={"grey"}>
+        <Text></Text>
+      </Box> */}
+      <Box width="100%" height="100%" bg="grey" alignItems="center">
+        <Box flexDirection={"row"}>
+          <Text color={"red"} fontSize="xl" marginRight={"40%"}>
+            Depart Now
+          </Text>
+          <Text fontSize="xl">Filters</Text>
+        </Box>
+        <Box
+          width={"93%"}
+          bgColor={"white"}
+          height={"19%"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          flexDirection={"row"}
+          borderColor={"yellow.400"}
+          borderWidth={2}
+          borderRadius={20}
+        >
+          <Box>
+            <Box width={"97%"} flexDirection={"row"} alignItems={"center"}>
+              <Entypo name="location" size={24} color="red" />
+              <Box marginX={5}>
+                <Text color={"amber.400"}>From</Text>
+                <Text>Current Location</Text>
+              </Box>
+            </Box>
+
+            <MaterialCommunityIcons
+              name="dots-vertical"
+              size={24}
+              color="black"
+            />
+            <Divider ml={6} orientation="horizontal" thickness="2" />
+            <MaterialCommunityIcons
+              name="dots-vertical"
+              size={24}
+              color="black"
+            />
+
+            <Box alignItems={"center"} width={"97%"} flexDirection={"row"}>
+              <FontAwesome5 name="location-arrow" size={24} color="red" />
+              <Box marginX={5}>
+                <Text color={"amber.400"}>To</Text>
+                <Text>Bus Terminal Direction to Go</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            justifyContent={"center"}
+            marginLeft={10}
+            bgColor={"gray.300"}
+            alignItems={"center"}
+            padding={1}
+            borderRadius={16}
+          >
+            <FontAwesome name="refresh" size={24} color="black" />
+          </Box>
+        </Box>
+        <Box
+          width={"93%"}
+          bgColor={"white"}
+          height={"79%"}
+          borderColor={"yellow.400"}
+          borderWidth={2}
+          borderRadius={20}
+          marginTop={"10%"}
+        >
+          <Box marginLeft={"6%"}>
+            <Text fontSize="2xl">Rutas recomendadas</Text>
+          </Box>
+          <Box
+            bgColor={"gainsboro"}
+            height={"20%"}
+            width={"93%"}
+            alignItems={"center"}
+            flexDirection={"row"}
+            borderColor={"yellow.400"}
+            borderWidth={2}
+            borderRadius={20}
+            margin={"4%"}
+          >
+            <Box margin={2} marginX={"20%"} alignItems={"center"}>
+              <Box>
+                <FontAwesome5 name="bus-alt" size={30} color="blue" />
+              </Box>
+              <Box>
+                <AntDesign name="wifi" size={24} color="green" />
+              </Box>
+              <Box>
+                <AntDesign name="back" size={24} color="red" />
+              </Box>
+            </Box>
+            <Box>
+              <Box backgroundColor={"green.400"} borderRadius={8}>
+                <Text alignContent={"center"} fontSize="xl">
+                  1680-MR
+                </Text>
+              </Box>
+              <Box>
+                <Text fontSize="sm">5km away from you</Text>
+              </Box>
+              <Box>
+                <Text fontSize="sm">Coming from jayanagar</Text>
+              </Box>
+            </Box>
+
+            <Box marginLeft={"16%"}>
+              <Box>
+                <Text fontSize="2xl">22 min</Text>
+              </Box>
+              <Box>
+                <Text fontSize="md">Travel time</Text>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </NativeBaseProvider>
+  );
+};
