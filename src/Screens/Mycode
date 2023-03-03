@@ -12,7 +12,8 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-
+import { Feather } from '@expo/vector-icons';
+<Feather name="crosshair" size={24} color="black" />
 export const PurTiketScreen = () => {
   return (
     <NativeBaseProvider>
@@ -139,3 +140,41 @@ export const PurTiketScreen = () => {
     </NativeBaseProvider>
   );
 };
+<View style={styles.container}>
+      <Text>Welcome Screen</Text>
+      <TouchableOpacity
+        onPress={()=> navigation.navigate("SignIn")}
+        style={{
+            padding: 10,
+            backgroundColor: "purple",
+            marginTop: "20%",
+            width: "50%",
+            borderRadius: 10
+        }}>
+            <Text
+                style={{
+                    fontSize: 15,
+                    textAlign: "center",
+                    color: "white"
+                }}
+            >Sign in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={()=> navigation.navigate("Register")}
+        style={{
+            padding: 10,
+            backgroundColor: "purple",
+            marginTop: "20%",
+            width: "50%",
+            borderRadius: 10
+        }}>
+            <Text
+                style={{
+                    fontSize: 15,
+                    textAlign: "center",
+                    color: "white"
+                }}
+            >Register</Text>
+        </TouchableOpacity>
+      <StatusBar style="auto" />
+    </View>

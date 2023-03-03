@@ -48,7 +48,7 @@ const MyStack = () => {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator initialRouteName="Welcome">
-            <Stack.Screen options={{title: "Welcome"}} name="Welcome" component={WelcomeScreen}/>
+            <Stack.Screen options={{title: "Welcome" ,headerShown: false}} name="Welcome" component={WelcomeScreen}/>
             <Stack.Screen name="SignIn" component={SignInScreen}/>
             <Stack.Screen name="Register" component={RegisterScreen}/>
             <Stack.Screen name="Home" component={MyDrawer} options={{
