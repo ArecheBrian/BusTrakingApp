@@ -2,19 +2,11 @@ import { VStack, useSafeArea } from "native-base"
 import { HomeHeader } from "../Components/HomeComponents/HomeHeader";
 import { HomeMap } from "../Components/HomeComponents/HomeMap";
 
-const SafeArea =()=> {
-    const safeAreaProps = useSafeArea({
-      safeAreaTop: true,
-    });
+export const HomeScreen =()=> {
     return (
-        <VStack _dark={{bg: "blueGray.900"}} _light={{bg: "blueGray.50"}} flex={1} {...safeAreaProps} alignItems="center">
+        <VStack _dark={{bg: "blueGray.900"}} _light={{bg: "blueGray.50"}} flex={1} alignItems="center">
           <HomeHeader/>
           <HomeMap />
         </VStack>
     );
-  }
-  
-  
-export const HomeScreen = () => {
-    return <SafeArea />
   }
