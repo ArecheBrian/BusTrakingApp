@@ -1,4 +1,4 @@
-import { Box, Center, HStack, VStack, Text, Divider} from "native-base"
+import { Box, Center, HStack, VStack, Text, Divider, Heading} from "native-base"
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 
 export const RecentTripsCrad = () => {
@@ -56,6 +56,20 @@ export const FromToCard = () => {
             <Center flex={1}>
                 <Feather name="repeat" size={20} color="black" />
             </Center>
+        </HStack>
+    )
+}
+
+export const RoutesCard = ({Color, Name}) => {
+    return (
+        <HStack w={"90%"} h={"20"} bg={"white"} borderRadius={18} shadow={4} pl={5} alignItems={"center"} space={3}>
+            <Center bg={"white"} size={58} borderRadius={100} shadow={3}>
+                <FontAwesome5 name="bus" size={24} color={`${Color}`}/>
+            </Center>
+            <VStack>
+                <Heading size={"xs"}>{Name}</Heading>
+                <Text color={"blueGray.400"}>Ray street / old college</Text>
+            </VStack>
         </HStack>
     )
 }

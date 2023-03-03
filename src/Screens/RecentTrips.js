@@ -1,5 +1,5 @@
 import { Box, Heading, ScrollView, VStack, Center } from "native-base";
-import { FromToCard, RecentTripsCrad } from "../Components/TiketsComponents/TiketsCardStyle";
+import { FromToCard, RecentTripsCrad } from "../Components/CardsComponents/Cards";
 
 
 export const RecentTrips = () => {
