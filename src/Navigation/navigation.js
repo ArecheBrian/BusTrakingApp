@@ -6,8 +6,9 @@ import {SignInScreen} from "../Screens/SignInScreen"
 import { WelcomeScreen } from "../Screens/WelcomeScreen"
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { TestScreen2 } from '../Screens/TestScreen2';
+
 import { MapScreen } from '../Screens/MapScreen';
+import { RecentTrips } from '../Screens/RecentTrips';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -15,7 +16,7 @@ const MyTabs = () => {
     <Tabs.Navigator initialRouteName="HomeB">
       <Tabs.Screen name="Map" component={MapScreen}/>
       <Tabs.Screen name="HomeB" component={HomeScreen}/>
-      <Tabs.Screen name="Test2" component={TestScreen2}/>
+      <Tabs.Screen name="Test2" component={RecentTrips}/>
     </Tabs.Navigator>
   )
 }
@@ -38,7 +39,6 @@ const MyDrawer = () => {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="HomeD" component={MyTabs} options={{
-        headerShown: false
       }} />
     </Drawer.Navigator>
   );
