@@ -11,7 +11,6 @@ import { MapScreen } from '../Screens/MapScreen';
 import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
 import { AccountScreen } from './../Screens/AccountScreen';
-import { TestScreen } from '../Screens/TestScreen';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -21,7 +20,6 @@ const MyTabs = () => {
       <Tabs.Screen name="HomeB" component={HomeScreen}/>
       <Tabs.Screen name="Test2" component={RecentTrips}/>
       <Tabs.Screen name="Routes" component={RoutesScreen}/>
-      <Tabs.Screen name="test" component={TestScreen}/>
     </Tabs.Navigator>
   )
 }
