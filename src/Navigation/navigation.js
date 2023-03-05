@@ -10,6 +10,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { MapScreen } from '../Screens/MapScreen';
 import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
+import { AccountScreen } from './../Screens/AccountScreen';
+import { TestScreen } from '../Screens/TestScreen';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -19,6 +21,7 @@ const MyTabs = () => {
       <Tabs.Screen name="HomeB" component={HomeScreen}/>
       <Tabs.Screen name="Test2" component={RecentTrips}/>
       <Tabs.Screen name="Routes" component={RoutesScreen}/>
+      <Tabs.Screen name="test" component={TestScreen}/>
     </Tabs.Navigator>
   )
 }
@@ -41,6 +44,7 @@ const MyDrawer = () => {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="HomeD" component={MyTabs}/>
+      <Drawer.Screen options={{headerShown:false}} name="My Account" component={AccountScreen}/>
     </Drawer.Navigator>
   );
 }
