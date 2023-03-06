@@ -5,7 +5,7 @@ export const RoutesScreen =()=> {
     return (
         <Box flex={1} bg={"blueGray.50"} pt={4}>
           <ScrollView >
-            <VStack space={4} alignItems={"center"}>
+            <VStack space={4} alignItems={"center"} pb={4}>
               <RoutesCard Color={"#FF0032"} Name={"RED LINE"}/>
               <RoutesCard Color={"#2192FF"} Name={"BLUE LINE"}/>
               <RoutesCard Color={"#38E54D"} Name={"GREEN LINE"}/>

@@ -10,8 +10,8 @@ export const RecentTrips = () => {
           <FromToCard/>
         </Center>
         <Box flex={4} bg={"blueGray.50"} pt={4} alignItems={"center"} borderTopRadius={35}>
-          <Heading size={'md'} w="90%" ml={5}>Recent Trips</Heading>
             <ScrollView w="100%">
+              <Heading size={'md'} w="90%" ml={5}>Recent Trips</Heading>
               <VStack alignItems={"center"} space={4} pt={5}>
                 <RecentTripsCrad/>
                 <RecentTripsCrad/>
