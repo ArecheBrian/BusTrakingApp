@@ -35,29 +35,35 @@ const navigation = useNavigation();
          </Box>
           </Box>
             <Center space={4}  bg={"blueGray.50"} flex={3}>
-          <VStack h={"90%"}  w={"87%"} space={89} >
+          <VStack h={"90%"}  w={"87%"} space={116} >
             <HStack space={140} alignItems={"center"}>
               <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Save Cards</Text>
               <Text fontWeight={"normal"}  fontSize={20} color={"blueGray.700"} >Add Card</Text>
             </HStack >
-              <VStack space={2} w={"47%"}>
+              <VStack justifyContent={"space-evenly"} space={3} w={"47%"}>
               <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Wallets</Text>
                 <HStack  space={4} alignItems={"center"}>
                 <Avatar source={{
-                    uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} size="sm" >
-               <Avatar.Badge />
+                    uri: "https://www.nicepng.com/png/detail/360-3605153_paytm-kya-hai-hindi-me-jankari-paytm-cash.png"}} size="sm" >
               </Avatar>
-                 <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Paytm</Text>
+                  <HStack>
+                  <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Paytm</Text>
+                  <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Link</Text>
+                  </HStack>
                 </HStack>
                 <HStack  space={4} alignItems={"center"}>
-                 <AntDesign name="plus" size={25} color="black" />
+                 <Avatar source={{
+                    uri: "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.6435-9/43447413_1987166791348029_9209894455249731584_n.png?stp=dst-png_p320x320&_nc_cat=105&ccb=1-7&_nc_sid=7aed08&_nc_ohc=f3pDzZmhEt4AX88J1cQ&_nc_ht=scontent-sjc3-1.xx&oh=00_AfBMr9_W7VnxEL65v_Pz67sxk6trv-gV24GR6p_XUmMyFg&oe=642E2284" }} size="sm" >
+                 </Avatar>
                  <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Phonepay</Text>
                 </HStack>
                 <HStack  space={4} alignItems={"center"}>
-                 <AntDesign name="plus" size={25} color="black" />
+                 <Avatar source={{
+                    uri: "https://www.nicepng.com/png/detail/769-7692873_download-google-pay-logo-png.png" }} size="sm" >
+                 </Avatar>
                  <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Gpay</Text>
                 </HStack>
-                <HStack pt={5} space={4} alignItems={"center"}>
+                <HStack pt={8} space={4} alignItems={"center"}>
                   <AntDesign name="plus" size={25} color="black" />
                   <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Other UPI</Text>
                 </HStack>
