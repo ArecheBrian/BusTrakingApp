@@ -29,7 +29,7 @@ export const AccountScreen = () => {
             <Avatar.Badge />
           </Avatar>
          <Center space={5} bg={"blueGray.50"} flex={1}>
-          <VStack h={"70%"} w={"80%"} space={6} mt={5}>
+          <VStack h={"70%"} w={"80%"} space={5} mt={5}>
             <HStack space={4} alignItems={"center"}>
               <Feather name="credit-card" size={30} color="black" />
               <Text fontSize={20} color={"blueGray.800"} onPress={()=> navigation.navigate("Payment")} >Payments</Text>

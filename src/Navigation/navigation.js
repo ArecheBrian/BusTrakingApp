@@ -59,6 +59,7 @@ const MyStack = () => {
               headerShown: false
             }} />
             <Stack.Screen options={{headerShown:false}} name="Payment" component={PaymentScreen}/>
+            <Stack.Screen options={{headerShown:false}} name="account" component={AccountScreen}/>
         </Stack.Navigator>
     )
 }
