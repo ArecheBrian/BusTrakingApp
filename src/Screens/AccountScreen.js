@@ -12,7 +12,7 @@ export const AccountScreen = () => {
       <Box flex={1} bg={"yellow.400"} {...safeAreaProps}>
          <Box w={"full"} h={10} bg={"yellow.400"}>
          <Box flexDirection={"row"} w={'full'} justifyContent={"space-around"}>
-          <Box pt={5} onPress={() => navigation.openDrawer()} >
+          <Box pt={5} >
             <Ionicons name="md-chevron-back-outline" size={24} color="black" onPress={() => navigation.openDrawer()} />
           </Box>
           <Center h={20}>
@@ -32,7 +32,7 @@ export const AccountScreen = () => {
           <VStack h={"70%"} w={"80%"} space={6} mt={5}>
             <HStack space={4} alignItems={"center"}>
               <Feather name="credit-card" size={30} color="black" />
-              <Text fontSize={20} color={"blueGray.800"} >Payments</Text>
+              <Text fontSize={20} color={"blueGray.800"} onPress={()=> navigation.navigate("Payment")} >Payments</Text>
             </HStack>
             <HStack space={4} alignItems={"center"}>  
               <Feather name="shield" size={30} color="black" />

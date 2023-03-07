@@ -11,6 +11,7 @@ import { MapScreen } from '../Screens/MapScreen';
 import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
 import { AccountScreen } from './../Screens/AccountScreen';
+import { PaymentScreen } from './../Screens/PaymentScreen';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -57,6 +58,7 @@ const MyStack = () => {
             <Stack.Screen name="Home" component={MyDrawer} options={{
               headerShown: false
             }} />
+            <Stack.Screen options={{headerShown:false}} name="Payment" component={PaymentScreen}/>
         </Stack.Navigator>
     )
 }
