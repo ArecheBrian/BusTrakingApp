@@ -3,14 +3,15 @@ import { HomeScreen } from "../Screens/HomeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { RegisterScreen } from "../Screens/RegisteScreen"
 import {SignInScreen} from "../Screens/SignInScreen"
-import { WelcomeScreen } from "../Screens/WelcomeScreen"
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
 import { MapScreen } from '../Screens/MapScreen';
 import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
 import { AccountScreen } from './../Screens/AccountScreen';
+import { WelcomeScreen } from '../Screens/WelcomeScreen';
+
+
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -51,7 +52,7 @@ const MyStack = () => {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator initialRouteName="Welcome">
-            <Stack.Screen options={{title: "Welcome"}} name="Welcome" component={WelcomeScreen}/>
+            <Stack.Screen options={{headerShown: false}} name="Welcome" component={WelcomeScreen}/>
             <Stack.Screen name="SignIn" component={SignInScreen}/>
             <Stack.Screen name="Register" component={RegisterScreen}/>
             <Stack.Screen name="Home" component={MyDrawer} options={{
