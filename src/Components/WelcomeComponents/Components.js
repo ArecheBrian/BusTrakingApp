@@ -1,60 +1,45 @@
 import { useNavigation } from "@react-navigation/native";
 import {
   Box,
-  Center,
   Heading,
   Text,
   VStack,
-  TouchableOpacity,
   Button,
-  space,
   Link,
 } from "native-base";
 
 
 export const WelcomeContainer = () => {
   return (
-    <VStack
-      bg={"yellow.400"}
+    <Box
       w={"90%"}
-      borderRadius={60}
       alignContent={"center"}
-      space={10}
+      height={"95%"}
     >
-      <VStack space={6}>
-        <Heading size="4xl" fontSize={"5xl"} color="#33353d" alignSelf={"center"}>
+      <VStack space={7} h={"50%"} justifyContent={"center"}>
+        <Heading size="4xl" fontSize={"5xl"} color="#33353d">
           Welcome
         </Heading>
-        <Text fontSize={20}>
+        <Text fontSize={18}>
           Come onboard, join in to experience the new MyBMTC wicht added
           features and improved funtionalities
         </Text>
       </VStack>
-      <Box>
-        <VStack bg={"yellow.400"} alignItems={"center"} space={3}>
-          <WelcomeButtomnsSign />
-          <WelcomeButtomnsRegister />
-          <WelcomeButtomnsSkip />
-        </VStack>
-      </Box>
-    </VStack>
+        
+      <VStack h={"50%"} alignItems={"center"} space={6} justifyContent={"center"}>
+        <WelcomeButtomns bgColor={"gray.800"} text={"Sign in"} textC={"blueGray.50"} route={"SignIn"}/>
+        <WelcomeButtomns bgColor={"blueGray.50"} text={"Register"} textC={"blueGray.900"} route={"Register"}/>
+        <WelcomeButtomnsSkip/>
+      </VStack>
+    </Box>
   );
 };
 
-export const WelcomeButtomnsSign = () => {
+export const WelcomeButtomns = ({bgColor, text, textC ,route}) => {
   const navigation = useNavigation();
   return (
-    <Button  onPress={()=> navigation.navigate("SignIn")} borderRadius="full" bg={"#41434b"} w={"60%"} >
-      <Heading color={"white"}>Sign in</Heading>
-    </Button>
-  );
-};
-
-export const WelcomeButtomnsRegister = () => {
-  const navigation = useNavigation();
-  return (
-    <Button onPress={()=> navigation.navigate("Register")} borderRadius="full" bg={"blueGray.50"} w={"60%"} >
-      <Heading>Register</Heading>
+    <Button  onPress={()=> navigation.navigate(`${route}`)} borderRadius="full" bg={bgColor} w={"40"} h={12}>
+        <Text color={textC} fontSize={"xl"} fontWeight={"bold"}>{text}</Text>
     </Button>
   );
 };
@@ -62,8 +47,9 @@ export const WelcomeButtomnsRegister = () => {
 export const WelcomeButtomnsSkip = () => {
   const navigation = useNavigation();
   return (
+    // solucionar la navegacion de este boton 
     <Link onPress={()=> navigation.navigate("MyTabs")} >
-    <Heading>skip</Heading>
+      <Text fontSize={"2xl"}>skip</Text>
     </Link>
   );
 };
