@@ -1,56 +1,22 @@
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+import { Box, Center, Heading, VStack} from 'native-base';
+import { Fontisto } from '@expo/vector-icons';
+import { WelcomeContainer } from '../Components/WelcomeComponents/Components'
 
 export const WelcomeScreen=()=> {
-    const navigation = useNavigation();
+  
   return (
-    <View style={styles.container}>
-      <Text>Welcome Screen</Text>
-      <TouchableOpacity
-        onPress={()=> navigation.navigate("SignIn")}
-        style={{
-            padding: 10,
-            backgroundColor: "purple",
-            marginTop: "20%",
-            width: "50%",
-            borderRadius: 10
-        }}>
-            <Text
-                style={{
-                    fontSize: 15,
-                    textAlign: "center",
-                    color: "white"
-                }}
-            >Sign in</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=> navigation.navigate("Register")}
-        style={{
-            padding: 10,
-            backgroundColor: "purple",
-            marginTop: "20%",
-            width: "50%",
-            borderRadius: 10
-        }}>
-            <Text
-                style={{
-                    fontSize: 15,
-                    textAlign: "center",
-                    color: "white"
-                }}
-            >Register</Text>
-        </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <Box bg={"blueGray.50"} flex={1}>
+      <Box flex={1} safeAreaTop={5}>
+        <VStack flex={1} space={2} justifyContent={"center"} alignItems={"center"}>
+          <Fontisto name="bus" size={80} color="#49494a" />
+          <Heading size="2xl"  color="#33353d">
+            MyBMTC
+          </Heading>
+        </VStack>
+      </Box>
+      <Center bg={"yellow.400"} flex={2} borderTopRadius={40}>
+        <WelcomeContainer/>
+      </Center>
+    </Box>
+  )};
