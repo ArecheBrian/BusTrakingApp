@@ -1,6 +1,8 @@
 import { Box, Heading, Avatar ,HStack, Center, useSafeArea ,Text, VStack , Button , props  } from "native-base";
 import { Ionicons , AntDesign} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { FromToCard , CreditCard } from "../Components/CardsComponents/Cards";
+
 
 
 export const PaymentScreen = () => {
@@ -40,6 +42,9 @@ const navigation = useNavigation();
               <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Save Cards</Text>
               <Text onPress={()=> navigation.navigate("AddCard")} fontWeight={"normal"}  fontSize={20} color={"blueGray.700"} >Add Card</Text>
             </HStack >
+               <Center>
+                  <CreditCard/>
+               </Center>
               <VStack space={3} w={"47%"}>
               <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Wallets</Text>
                 <HStack  space={4} alignItems={"center"}>

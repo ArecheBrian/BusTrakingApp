@@ -60,6 +60,40 @@ export const FromToCard = () => {
     )
 }
 
+export const CreditCard = () => {
+    return (
+        <Box bg={"darkBlue.500"} w={"80%"}  borderRadius={18}>
+            <VStack space={5} >
+                <HStack  pt={2} justifyContent={"flex-end"} >
+                    <Box bg={"amber.200"}>
+                        <VStack >
+                            <Text>Visa</Text>
+                        </VStack>
+                    </Box>
+                </HStack>
+                <HStack alignItems={"center"} justifyContent={"center"}>
+                <Box >
+                    <VStack>
+                        <Text>**** **** **** 4546</Text>
+                    </VStack>
+                </Box>
+                </HStack>
+                <Box>
+                    <VStack>
+                        <Text>KLK</Text>
+                    </VStack>
+                </Box>
+                <Box>
+                    <VStack>
+                        <Text>KLK</Text>
+                    </VStack>
+                </Box>
+
+            </VStack>
+        </Box>
+    )
+}
+
 export const RoutesCard = ({Color, Name}) => {
     return (
         <HStack w={"90%"} h={"20"} bg={"white"} borderRadius={18} shadow={4} pl={5} alignItems={"center"} space={3}>
