@@ -1,7 +1,6 @@
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { HomeScreen } from "../Screens/HomeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { RegisterScreen } from "../Screens/RegisteScreen"
 import {SignInScreen} from "../Screens/SignInScreen"
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -10,7 +9,7 @@ import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
 import { AccountScreen } from './../Screens/AccountScreen';
 import { WelcomeScreen } from '../Screens/WelcomeScreen';
-
+import { RegisterScreen } from '../Screens/RegisterScreen';
 
 
 const MyTabs = () => {
@@ -53,8 +52,8 @@ const MyStack = () => {
     return (
         <Stack.Navigator initialRouteName="Welcome">
             <Stack.Screen options={{headerShown: false}} name="Welcome" component={WelcomeScreen}/>
-            <Stack.Screen name="SignIn" component={SignInScreen}/>
-            <Stack.Screen name="Register" component={RegisterScreen}/>
+            <Stack.Screen options={{headerShown: false}} name="SignIn" component={SignInScreen}/>
+            <Stack.Screen  options={{headerShown: false}} name="Register" component={RegisterScreen}/>
             <Stack.Screen name="Home" component={MyDrawer} options={{
               headerShown: false
             }} />

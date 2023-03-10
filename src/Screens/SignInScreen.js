@@ -1,87 +1,32 @@
-import React, {useState} from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import {StyleSheet , View, Text , SafeAreaView , TouchableOpacity} from 'react-native';
-import CustomInput from '../Components/CustomInput';
-import CustomButton from '../Components/CustomButton/CustomButton';
-import { HomeScreen } from './HomeScreen';
-
-
-export const SignInScreen =()=> {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const onSignInPressed = () => {
-        console.warn("Sign in");
-    }
-
-    const onForgotPasswordPressed = () => {
-      console.warn("onForgotPasswordPressed");
-  }
-
-    const onSignInFacebook = () => {
-      console.warn("onSignInFacebook");
-  }
-
-  const onSignInGoogle = () => {
-    console.warn("onSignInGoogle");
-  }
-
-  const onSignUpPress = () => {
-    console.warn("onSignUpPress");
-  }
-
-    const navigation = useNavigation();
+import { Box, Center, Heading, HStack, VStack, Text, Link } from "native-base";
+import { AntDesign } from "@expo/vector-icons";
+import { SingInContainer } from "../Components/SingInComponents/SingInComponents";
+import { useNavigation } from "@react-navigation/native";
+export const SignInScreen = () => {
+  const navigation = useNavigation();
   return (
-   
-   <View style={styles.container}>
+    <Box bg={"yellow.400"} flex={1}>
+    
+        <HStack safeArea={6} bg={"yellow.400"} justifyContent={"space-between"} alignItems={"center"}>
+        <Link onPress={() => navigation.navigate("Welcome")}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </Link>
+          <Link onPress={() => navigation.navigate("Register")}>
+            <Text fontSize={"xl"}>Registrer</Text>
+          </Link>
+        </HStack>
+      <VStack bg={"yellow.400"} w={"90%"} alignSelf={"center"} space={3} pl={2}>
+        <Heading size={"xl"} fontSize={"5xl"}>
+          Sign in
+        </Heading>
+        <Text fontSize={"xl"} fontWeight={"bold"}>
+          Welcome back, Parna. we missed you.
+        </Text>
+      </VStack>
 
-        <View>
-
-        <Text style={{fontSize: 37, fontWeight: 'bold' , marginTop: "5%" }}>Sign In</Text>
-
-        </View>
-
-      <View style ={styles.root}>
-
-      <CustomInput placeholder="Username" value={username} setvalue={setUsername}/>
-      <CustomInput placeholder="Password" value={password} setvalue={setPassword} secureTextEntry/>
-
-      <CustomButton text="Sign In" onPress={()=> navigation.navigate("Home")} />
-
-      <CustomButton text="Forgot Password?" onPress={()=> navigation.navigate("Home")} type="TERTIARY" />
-
-      <CustomButton text="Sign In with Facebook" bgColor ="#E7EAF4" fgColor= "#4765A9" />
-      <CustomButton text="Sign In with Google" bgColor ="#FAE9EA" fgColor= "#DD4D44" />
-      <CustomButton text="Sign In with Apple"  bgColor ="#e3e3e3" fgColor= "#363636" />
-      <CustomButton text="Dont have an account? create one" type="TERTIARY" onPress={()=> navigation.navigate("Register")} />
-        
-      </View> 
-
-      <StatusBar style="auto" />
-      
-      
-    </View>
+      <Center bg={"blueGray.50"} flex={3} borderTopRadius={40} marginTop={"6"}>
+        <SingInContainer/>
+      </Center>
+    </Box>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    alignItems: "center",
-  },
-  root: {
-
-    padding: 10,
-    marginTop: "10%",
-    width: "100%",
-    borderRadius: 10
-
-  }
-
-
-});
+};
