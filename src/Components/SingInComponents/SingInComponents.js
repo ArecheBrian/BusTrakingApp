@@ -10,6 +10,7 @@ import {
   Heading,
   Box,
   ScrollView,
+  FormControl,
 } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -23,13 +24,17 @@ export const SingInContainer = () => {
       
       <HStack bg={"blueGray.50"} w={"90%"} borderRadius={"10"}>
         <VStack space={"8"} w="90%" maxW="300px" mx="auto">
+          <FormControl>
           <Input size="lg" variant="rounded" placeholder="Usename" />
+          </FormControl>
+          <FormControl>
           <Input
             type={"password"}
             size="lg"
             variant="rounded"
             placeholder="Password"
           />
+          </FormControl>
           <HStack space={4} justifyContent={"center"}>
             <Box>
           <Checkbox colorScheme="green">

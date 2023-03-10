@@ -2,15 +2,23 @@ import { Box, Center, Heading, HStack, VStack, Text, Link } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import { RegisterContainer } from "../Components/RegisterComponets/RegisterContatiner";
 import { useNavigation } from "@react-navigation/native";
+import { HeaderArea } from "../Components/loginAreaComponents/HeaderArea";
+import { ContentAreaR } from "../Components/loginAreaComponents/ContentArea";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 export const RegisterScreen = () => {
   const navigation = useNavigation();
   return (
     // llamar header and content
-    <Box flex={1}>
-
-    </Box>
+    <ScrollView>
+    <Box flex={1} bg={"yellow.400"}>
+      
+        <HeaderArea/>
+      <ContentAreaR/>
+     
+    </Box></ScrollView>
+    
 
 
 
