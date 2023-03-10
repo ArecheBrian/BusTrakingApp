@@ -1,42 +1,18 @@
-import { Box, Heading, Avatar ,HStack, Center, useSafeArea ,Text, VStack , Button , props  } from "native-base";
-import { Ionicons , AntDesign , Feather} from '@expo/vector-icons';
+import { Box ,HStack, Center ,Text} from "native-base";
 import { useNavigation } from '@react-navigation/native';
-import { CreditCard } from "../Components/CardsComponents/Cards";
-import { Wallets } from '../Components/CardsComponents/Cards';
+import { CreditCard } from "../Components/PaymentsComponents/Payments";
+import { Wallets } from '../Components/PaymentsComponents/Payments';
+import { HeadingPay } from '../Components/PaymentsComponents/Payments';
 
 
 
 export const PaymentScreen = () => {
+
 const navigation = useNavigation();
 
-    const safeAreaProps = useSafeArea ({
-        safeAreaTop: true, 
-    });
       return (
         <Box flex={1} bg={"blueGray.50"}>
-          <Box borderBottomRadius={52} flex={2/1} bg={"yellow.400"} {...safeAreaProps} >
-          <Box flexDirection={"row"} pr={12}>
-            <Box>
-          <HStack space={6} pl={7} pt={6} >
-                <Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("account")} /> 
-          </HStack>
-            </Box>
-          <VStack space={6} flex={1}>
-          <Center h={20}>
-            <Heading color={"blueGray.700"} size={"lg"}>Payments</Heading>
-          </Center>
-          <Center>
-            <VStack space={1}>
-               <Heading size={'sm'} fontWeight={"bold"}  color={"blueGray.700"}>My BMTC cash</Heading>
-               <Heading size={"3xl"} fontWeight={"extrabold"} color={"blueGray.700"}>₹52</Heading>
-            </VStack>
-            <VStack pt={6} space={3}>
-                <AntDesign name="pluscircleo" size={45} color={"gray"} />
-            </VStack>
-          </Center>
-          </VStack>
-         </Box>
-          </Box>
+            <HeadingPay/>
           <Box flex={3} w={"full"} >
          <Box pt={4} >
           <HStack  flexDirection={"row"}  w={'full'} justifyContent={"space-around"}>
