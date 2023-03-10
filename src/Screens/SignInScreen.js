@@ -5,28 +5,36 @@ import { useNavigation } from "@react-navigation/native";
 export const SignInScreen = () => {
   const navigation = useNavigation();
   return (
-    <Box bg={"yellow.400"} flex={1}>
-    
-        <HStack safeArea={6} bg={"yellow.400"} justifyContent={"space-between"} alignItems={"center"}>
-        <Link onPress={() => navigation.navigate("Welcome")}>
-            <AntDesign name="arrowleft" size={24} color="black" />
-          </Link>
-          <Link onPress={() => navigation.navigate("Register")}>
-            <Text fontSize={"xl"}>Registrer</Text>
-          </Link>
-        </HStack>
-      <VStack bg={"yellow.400"} w={"90%"} alignSelf={"center"} space={3} pl={2}>
-        <Heading size={"xl"} fontSize={"5xl"}>
-          Sign in
-        </Heading>
-        <Text fontSize={"xl"} fontWeight={"bold"}>
-          Welcome back, Parna. we missed you.
-        </Text>
-      </VStack>
+    // llamar header and content
+    <Box flex={1}>
 
-      <Center bg={"blueGray.50"} flex={3} borderTopRadius={40} marginTop={"6"}>
-        <SingInContainer/>
-      </Center>
     </Box>
+
+
+
+
+    // <Box bg={"yellow.400"} flex={1}>
+    
+    //     <HStack safeArea={6} bg={"yellow.400"} justifyContent={"space-between"} alignItems={"center"}>
+    //     <Link onPress={() => navigation.navigate("Welcome")}>
+    //         <AntDesign name="arrowleft" size={24} color="black" />
+    //       </Link>
+    //       <Link onPress={() => navigation.navigate("Register")}>
+    //         <Text fontSize={"xl"}>Registrer</Text>
+    //       </Link>
+    //     </HStack>
+    //   <VStack bg={"yellow.400"} w={"90%"} alignSelf={"center"} space={3} pl={2}>
+    //     <Heading size={"xl"} fontSize={"5xl"}>
+    //       Sign in
+    //     </Heading>
+    //     <Text fontSize={"xl"} fontWeight={"bold"}>
+    //       Welcome back, Parna. we missed you.
+    //     </Text>
+    //   </VStack>
+
+    //   <Center bg={"blueGray.50"} flex={3} borderTopRadius={40} marginTop={"6"}>
+    //     <SingInContainer/>
+    //   </Center>
+    // </Box>
   );
 };

@@ -5,7 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 export const RegisterContainer = () => {
   
   return (
-    <Center>
+    <Center bg={"blueGray.50"} flex={4} borderTopRadius={40} >
       <HStack bg={"blueGray.50"} w={"90%"} borderRadius={"10"}> 
         <VStack space={"8"} w="90%" maxW="300px" mx="auto">
           <Input size="lg" variant="rounded" placeholder="FullName" />
@@ -22,8 +22,7 @@ export const RegisterContainer = () => {
           <Box alignItems={"center"}><ButtomnsRegister/></Box>
           <Box alignItems={"center"}><Text fontSize={"2xl"} >Or, Sing Up with</Text></Box>
         <HStack justifyContent={"center"} space={"16"} >
-          <VStack alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"} shadow={5}><FontAwesome5 name="google" size={50} color="#ec4435" /></VStack>
-          <VStack  alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"} shadow={5}><FontAwesome5 name="facebook" size={50} color="#3a5997" /></VStack>
+          {/* add icon buttom */}
         </HStack>
         </VStack>
       </HStack>
