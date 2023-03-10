@@ -1,14 +1,13 @@
 import { Box, Center, Heading, HStack, VStack, Text, Link } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { SingInContainer } from "../Components/SingInComponents/SingInComponents";
-
+import { useNavigation } from "@react-navigation/native";
 export const SignInScreen = () => {
   const navigation = useNavigation();
   return (
     <Box bg={"yellow.400"} flex={1}>
     
-        <HStack safeArea={6} bg={"amber.400"} justifyContent={"space-between"} alignItems={"center"}>
+        <HStack safeArea={6} bg={"yellow.400"} justifyContent={"space-between"} alignItems={"center"}>
         <Link onPress={() => navigation.navigate("Welcome")}>
             <AntDesign name="arrowleft" size={24} color="black" />
           </Link>
@@ -16,7 +15,7 @@ export const SignInScreen = () => {
             <Text fontSize={"xl"}>Registrer</Text>
           </Link>
         </HStack>
-      <VStack bg={"yellow.400"} w={"90%"} alignSelf={"center"} space={3}>
+      <VStack bg={"yellow.400"} w={"90%"} alignSelf={"center"} space={3} pl={2}>
         <Heading size={"xl"} fontSize={"5xl"}>
           Sign in
         </Heading>

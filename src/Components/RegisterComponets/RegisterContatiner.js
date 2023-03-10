@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 
 export const RegisterContainer = () => {
+  
   return (
     <Center>
       <HStack bg={"blueGray.50"} w={"90%"} borderRadius={"10"}> 
@@ -20,9 +21,9 @@ export const RegisterContainer = () => {
           </Checkbox>
           <Box alignItems={"center"}><ButtomnsRegister/></Box>
           <Box alignItems={"center"}><Text fontSize={"2xl"} >Or, Sing Up with</Text></Box>
-        <HStack justifyContent={"center"} space={"16"}>
-          <VStack alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"}><FontAwesome5 name="google" size={50} color="#ec4435" /></VStack>
-          <VStack  alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"}><FontAwesome5 name="facebook" size={50} color="#3a5997" /></VStack>
+        <HStack justifyContent={"center"} space={"16"} >
+          <VStack alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"} shadow={5}><FontAwesome5 name="google" size={50} color="#ec4435" /></VStack>
+          <VStack  alignItems={"center"} borderRadius={35} bg={"blueGray.50"} w={"20%"} shadow={5}><FontAwesome5 name="facebook" size={50} color="#3a5997" /></VStack>
         </HStack>
         </VStack>
       </HStack>
