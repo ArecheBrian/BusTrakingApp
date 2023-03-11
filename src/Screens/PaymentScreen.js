@@ -7,9 +7,7 @@ import { HeadingPay } from '../Components/PaymentsComponents/Payments';
 
 
 export const PaymentScreen = () => {
-
 const navigation = useNavigation();
-
       return (
         <Box flex={1} bg={"blueGray.50"}>
             <HeadingPay/>
@@ -17,7 +15,7 @@ const navigation = useNavigation();
          <Box pt={4} >
           <HStack  flexDirection={"row"}  w={'full'} justifyContent={"space-around"}>
             <Box >
-                 <Text fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Save Cards</Text>
+                 <Text  fontWeight={"medium"}  fontSize={24} color={"blueGray.700"} >Save Cards</Text>
             </Box>
           <Box>
           <Text onPress={()=> navigation.navigate("AddCard")} fontWeight={"normal"}  fontSize={18} color={"blueGray.700"} >Add Card</Text>

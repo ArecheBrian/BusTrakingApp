@@ -7,7 +7,8 @@ export const CreditCard = () => {
     return (
         <Box bg={"darkBlue.500"} w={"70%"}  borderRadius={20}>
             <VStack space={2} >
-                <HStack pt={2} flexDirection={"row-reverse"}   >
+                <VStack space={4}>
+                    <HStack pt={2} flexDirection={"row-reverse"}   >
                     <Box >
                         <VStack pr={5}>
                             <Heading italic color={"yellow.300"}  fontSize={"lg"} >VISA</Heading>
@@ -21,6 +22,8 @@ export const CreditCard = () => {
                     </VStack>
                 </Box>
                 </HStack>
+                    
+                </VStack>
                 <HStack >
                 <Box pl={4} >
                     <VStack>
@@ -142,7 +145,7 @@ export const HeadingPay = () => {
           <Box flexDirection={"row"} pr={12}>
             <Box>
           <HStack space={6} pl={7} pt={6} >
-                <Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("account")} /> 
+                <Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("HomeD")} /> 
           </HStack>
             </Box>
           <VStack space={6} flex={1}>

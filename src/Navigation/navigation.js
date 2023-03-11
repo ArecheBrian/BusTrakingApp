@@ -12,6 +12,7 @@ import { AccountScreen } from './../Screens/AccountScreen';
 import { PaymentScreen } from './../Screens/PaymentScreen';
 import { AddcardScreen } from './../Screens/AddcardScreen';
 import { WelcomeScreen } from '../Screens/WelcomeScreen';
+import {DrawerActions} from '@react-navigation/native';
 
 
 
