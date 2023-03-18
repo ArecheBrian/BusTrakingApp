@@ -1,6 +1,8 @@
 import { Box, Heading, Avatar ,HStack, Center, useSafeArea ,Text, VStack , Button , props  } from "native-base";
 import { Feather, MaterialIcons , MaterialCommunityIcons, Ionicons} from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import {DrawerActions} from '@react-navigation/native';
+
 
 export const AccountScreen = () => {
   const navigation = useNavigation();
@@ -12,8 +14,8 @@ export const AccountScreen = () => {
       <Box flex={1} bg={"yellow.400"} {...safeAreaProps}>
          <Box w={"full"} h={10} bg={"yellow.400"}>
          <Box flexDirection={"row"} w={'full'} justifyContent={"space-around"}>
-          <Box pt={5} onPress={() => navigation.openDrawer()} >
-            <Ionicons name="md-chevron-back-outline" size={24} color="black" onPress={() => navigation.openDrawer()} />
+          <Box pt={5} >
+            <Ionicons name="md-chevron-back-outline" size={24} color="black" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
           </Box>
           <Center h={20}>
             <Heading size={'md'}>Enmanuelle</Heading>
@@ -29,10 +31,10 @@ export const AccountScreen = () => {
             <Avatar.Badge />
           </Avatar>
          <Center space={5} bg={"blueGray.50"} flex={1}>
-          <VStack h={"70%"} w={"80%"} space={6} mt={5}>
+          <VStack h={"70%"} w={"80%"} space={5} mt={5}>
             <HStack space={4} alignItems={"center"}>
               <Feather name="credit-card" size={30} color="black" />
-              <Text fontSize={20} color={"blueGray.800"} >Payments</Text>
+              <Text fontSize={20} color={"blueGray.800"} onPress={()=> navigation.navigate("Payment")} >Payments</Text>
             </HStack>
             <HStack space={4} alignItems={"center"}>  
               <Feather name="shield" size={30} color="black" />

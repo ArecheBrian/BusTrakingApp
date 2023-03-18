@@ -1,5 +1,5 @@
-import { Box, Center, HStack, VStack, Text, Divider, Heading} from "native-base"
-import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather } from '@expo/vector-icons';
+import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea} from "native-base"
+import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
 
 export const RecentTripsCrad = () => {
     return (
@@ -73,3 +73,4 @@ export const RoutesCard = ({Color, Name}) => {
         </HStack>
     )
 }
+

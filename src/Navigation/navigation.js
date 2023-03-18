@@ -8,9 +8,11 @@ import { MapScreen } from '../Screens/MapScreen';
 import { RecentTrips } from '../Screens/RecentTrips';
 import { RoutesScreen } from '../Screens/RoutesScreen';
 import { AccountScreen } from './../Screens/AccountScreen';
+import { PaymentScreen } from './../Screens/PaymentScreen';
+import { AddcardScreen } from './../Screens/AddcardScreen';
 import { WelcomeScreen } from '../Screens/WelcomeScreen';
-import { RegisterScreen } from '../Screens/RegisterScreen';
 
+import {DrawerActions} from '@react-navigation/native';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -57,6 +59,10 @@ const MyStack = () => {
             <Stack.Screen name="Home" component={MyDrawer} options={{
               headerShown: false
             }} />
+            <Stack.Screen options={{headerShown:false}} name="Payment" component={PaymentScreen}/>
+            <Stack.Screen options={{headerShown:false}} name="account" component={AccountScreen}/>
+            <Stack.Screen options={{headerShown:false}} name="AddCard" component={AddcardScreen}/>
+
         </Stack.Navigator>
     )
 }
