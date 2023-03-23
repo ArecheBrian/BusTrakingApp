@@ -14,6 +14,9 @@ import { WelcomeScreen } from '../Screens/WelcomeScreen';
 import { RegisterScreen } from '../Screens/RegisterScreen';
 
 import {DrawerActions} from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { supabase } from '../../lib/supabase';
+import { resetSlice } from '../Redux/Features/UserSlice';
 
 
 const MyTabs = () => {
@@ -29,15 +32,20 @@ const MyTabs = () => {
 }
 
 function CustomDrawerContent(props) {
+  const dispatch = useDispatch()
+  const logOutHandler = async () => {
+    const {data, error} = await supabase.auth.signOut()
+    dispatch(resetSlice())
+  }
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
-      <DrawerItem label="Log Out" onPress={() => alert('Salir')} />
+      <DrawerItem label="Log Out" onPress={() => logOutHandler()} />
     </DrawerContentScrollView>
   );
 }
 
-const MyDrawer = () => {
+const PrivateNavigation = () => {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator 
@@ -51,27 +59,25 @@ const MyDrawer = () => {
   );
 }
 
-const MyStack = () => {
+const PublicNavigation = () => {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator initialRouteName="Welcome">
             <Stack.Screen options={{headerShown: false}} name="Welcome" component={WelcomeScreen}/>
-            <Stack.Screen options={{headerShown: false}} name="SignIn" component={PaymentScreen}/>
+            <Stack.Screen options={{headerShown: false}} name="SignIn" component={SignInScreen}/>
             <Stack.Screen  options={{headerShown: false}} name="Register" component={RegisterScreen}/>
-            <Stack.Screen name="Home" component={MyDrawer} options={{
-              headerShown: false
-            }} />
-            <Stack.Screen options={{headerShown:false}} name="Payment" component={PaymentScreen}/>
-            <Stack.Screen options={{headerShown:false}} name="account" component={AccountScreen}/>
-            <Stack.Screen options={{headerShown:false}} name="AddCard" component={AddcardScreen}/>
-
         </Stack.Navigator>
     )
 }
 export const BusTrakingApp = () => {
+  const state = useSelector((state)=> state.Users)
+  const session = state.session
     return (
         <NavigationContainer>
-            <MyStack/>
+          {
+            session ? <PrivateNavigation/> : <PublicNavigation/>
+          }
+            
         </NavigationContainer>
     )
 }
