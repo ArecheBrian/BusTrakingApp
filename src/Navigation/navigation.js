@@ -12,7 +12,7 @@ import { PaymentScreen } from './../Screens/PaymentScreen';
 import { AddcardScreen } from './../Screens/AddcardScreen';
 import { WelcomeScreen } from '../Screens/WelcomeScreen';
 import { RegisterScreen } from '../Screens/RegisterScreen';
-
+import { Feather,Fontisto , Octicons } from '@expo/vector-icons';
 import {DrawerActions} from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { supabase } from '../../lib/supabase';
@@ -22,11 +22,59 @@ import { resetSlice } from '../Redux/Features/UserSlice';
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
   return (
-    <Tabs.Navigator initialRouteName="HomeB">
-      <Tabs.Screen name="Map" component={MapScreen}/>
-      <Tabs.Screen name="HomeB" component={HomeScreen}/>
-      <Tabs.Screen name="Test2" component={RecentTrips}/>
-      <Tabs.Screen name="Routes" component={RoutesScreen}/>
+    <Tabs.Navigator 
+      initialRouteName="Map"
+      activeColor="#ff8c00"
+      barStyle={{
+        backgroundColor: "white",
+        paddingTop:20,
+        height:80,
+        // borderTopLeftRadius: 28,
+        // borderTopRightRadius: 28,
+        overflow: "hidden",
+        // position: "absolute"
+      }}
+      screenOptions={{
+        tabBarLabel: false,
+      }}>
+      <Tabs.Screen name="Map" component={MapScreen}
+        options={{
+         tabBarIcon: ({color}) => {
+          return <Feather name="map" size={24} color={color} />
+        }
+      }} />
+      <Tabs.Screen 
+        name="HomeB" 
+        component={HomeScreen}
+        options= {{
+         tabBarIcon: ({color}) => {
+           return <Feather name="calendar" size={24} color={color} />
+          },
+      }} />
+      <Tabs.Screen 
+        name="my account" 
+        component={AccountScreen}
+        options= {{
+          tabBarIcon: ({color}) => {
+            return <Feather name="search" size={24} color={color} />
+          }
+        }} />
+      <Tabs.Screen 
+        name="Test2" 
+        component={RecentTrips}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Fontisto name="wallet" size={24} color={color} />
+          }
+        }} />
+      <Tabs.Screen 
+        name="Routes" 
+        component={RoutesScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Octicons name="gift" size={24} color={color} />
+          }
+        }} />
     </Tabs.Navigator>
   )
 }
@@ -69,6 +117,7 @@ const PublicNavigation = () => {
         </Stack.Navigator>
     )
 }
+
 export const BusTrakingApp = () => {
   const state = useSelector((state)=> state.Users)
   const session = state.session
