@@ -26,12 +26,13 @@ const MyTabs = () => {
       initialRouteName="Map"
       activeColor="#ff8c00"
       barStyle={{
-        backgroundColor: "#6a5acd",
-        paddingTop: 7,
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
-        position: 'absolute',
-        overflow: 'hidden',
+        backgroundColor: "white",
+        paddingTop:20,
+        height:80,
+        // borderTopLeftRadius: 28,
+        // borderTopRightRadius: 28,
+        overflow: "hidden",
+        // position: "absolute"
       }}
       screenOptions={{
         tabBarLabel: false,
@@ -51,8 +52,8 @@ const MyTabs = () => {
           },
       }} />
       <Tabs.Screen 
-        name="Welcome" 
-        component={WelcomeScreen}
+        name="my account" 
+        component={AccountScreen}
         options= {{
           tabBarIcon: ({color}) => {
             return <Feather name="search" size={24} color={color} />
