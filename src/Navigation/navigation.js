@@ -23,15 +23,63 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-
+import { Fontisto,Octicons } from "@expo/vector-icons";
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
   return (
-    <Tabs.Navigator initialRouteName="HomeB">
-      <Tabs.Screen name="Map" component={MapScreen} />
-      <Tabs.Screen name="HomeB" component={HomeScreen} />
-      <Tabs.Screen name="Test2" component={RecentTrips} />
-      <Tabs.Screen name="Routes" component={RoutesScreen} />
+    <Tabs.Navigator 
+      initialRouteName="Map"
+      activeColor="#ff8c00"
+      barStyle={{
+        backgroundColor: "white",
+        paddingTop:20,
+        height:80,
+        // borderTopLeftRadius: 28,
+        // borderTopRightRadius: 28,
+        overflow: "hidden",
+        // position: "absolute"
+      }}
+      screenOptions={{
+        tabBarLabel: false,
+      }}>
+      <Tabs.Screen name="Map" component={MapScreen}
+        options={{
+         tabBarIcon: ({color}) => {
+          return <Feather name="map" size={24} color={color} />
+        }
+      }} />
+      <Tabs.Screen 
+        name="HomeB" 
+        component={HomeScreen}
+        options= {{
+         tabBarIcon: ({color}) => {
+           return <Feather name="calendar" size={24} color={color} />
+          },
+      }} />
+      <Tabs.Screen 
+        name="my account" 
+        component={AccountScreen}
+        options= {{
+          tabBarIcon: ({color}) => {
+            return <Feather name="search" size={24} color={color} />
+          }
+        }} />
+      <Tabs.Screen 
+        name="Test2" 
+        component={RecentTrips}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Fontisto name="wallet" size={24} color={color} />
+          }
+        }} />
+      <Tabs.Screen 
+        name="Routes" 
+        component={RoutesScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Octicons name="gift" size={24} color={color} />
+          }
+        }} />
     </Tabs.Navigator>
   );
 };
@@ -43,9 +91,9 @@ function CustomDrawerContent(props) {
     dispatch(resetSlice());
   };
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView {...props} >
         <VStack m={6} >
-          <HStack>
+          <HStack >
               <Avatar
                 size="xl"
                 bg="green.500"
@@ -62,7 +110,6 @@ function CustomDrawerContent(props) {
           </Text>
           <Text fontSize="lg">Elvisdeveloper@gmail.com</Text>
         </VStack>
-      
       <DrawerItem
         labelStyle={{ marginLeft: -18 }}
         icon={() => <Entypo name="home" size={24} color="black" />}
@@ -100,9 +147,8 @@ function CustomDrawerContent(props) {
         label="About us"
         onPress={() => {props.navigation.navigate('Aboutus')}}
       />
-     
       <DrawerContentScrollView {...props}>
-        <Box>
+        <Box mt={"20"}>
       <DrawerItem
         labelStyle={{ marginLeft: -18 }}
         icon={() => <MaterialIcons name="logout" size={24} color="black" />}
