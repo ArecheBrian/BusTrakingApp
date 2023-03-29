@@ -1,7 +1,4 @@
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItem,
+import {createDrawerNavigator,DrawerContentScrollView,DrawerItem,
 } from "@react-navigation/drawer";
 import { Box, HStack, Text, VStack, Avatar } from "native-base";
 import { HomeScreen } from "../Screens/HomeScreen";
@@ -15,15 +12,10 @@ import { RoutesScreen } from "../Screens/RoutesScreen";
 import { AccountScreen } from "./../Screens/AccountScreen";
 import { WelcomeScreen } from "../Screens/WelcomeScreen";
 import { RegisterScreen } from "../Screens/RegisterScreen";
-import { DrawerActions } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
-import { resetSlice } from "../Redux/Features/UserSlice";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Fontisto,Octicons } from "@expo/vector-icons";
+import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice  } from "@expo/vector-icons";
+
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
   return (
@@ -34,10 +26,7 @@ const MyTabs = () => {
         backgroundColor: "white",
         paddingTop:20,
         height:80,
-        // borderTopLeftRadius: 28,
-        // borderTopRightRadius: 28,
         overflow: "hidden",
-        // position: "absolute"
       }}
       screenOptions={{
         tabBarLabel: false,

@@ -1,28 +1,11 @@
-import {
-  Center,
-  HStack,
-  Text,
-  VStack,
-  Input,
-  Checkbox,
-  Link,
-  Button,
-  Heading,
-  Box,
-  ScrollView,
-  FormControl,
-} from "native-base";
-
+import {Center,HStack,Text,VStack,Input,Checkbox,Link,Button,Heading,Box,ScrollView,FormControl} from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-
 export const SingInContainer = () => {
-  
   return (
     <Center>
-      
       <HStack bg={"blueGray.50"} w={"90%"} borderRadius={"10"}>
         <VStack space={"8"} w="90%" maxW="300px" mx="auto">
           <FormControl>
@@ -55,7 +38,6 @@ export const SingInContainer = () => {
           </VStack>
         </VStack>
       </HStack>
-      
     </Center>
   );
 };
