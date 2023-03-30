@@ -1,10 +1,11 @@
 import { Box, ScrollView, VStack } from "native-base"
 import { RoutesCard } from "../Components/CardsComponents/Cards";
-
+import { AppBar } from "../Components/NavigationComponents/headerComponents";
 export const RoutesScreen =()=> {
     return (
-        <Box flex={1} bg={"blueGray.50"} pt={4}>
-          <ScrollView >
+        <Box flex={1} bg={"blueGray.50"}>
+          <AppBar/>
+          <ScrollView mt={6}>
             <VStack space={4} alignItems={"center"} pb={4}>
               <RoutesCard Color={"#FF0032"} Name={"RED LINE"}/>
               <RoutesCard Color={"#2192FF"} Name={"BLUE LINE"}/>
