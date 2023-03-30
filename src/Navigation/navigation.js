@@ -25,7 +25,7 @@ const MyTabs = () => {
       barStyle={{
         backgroundColor: "white",
         paddingTop:20,
-        height:80,
+        height:90,
         overflow: "hidden",
       }}
       screenOptions={{

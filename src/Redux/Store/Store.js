@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import nameSlice from "../Features/testSlice";
 import userSlice from "../Features/UserSlice";
 import ticketSlice from "../Features/TicketSlice"
+import StopsSlice from "../Features/StopsSlice";
 
 
 export const store = configureStore({
@@ -9,5 +10,6 @@ export const store = configureStore({
         name: nameSlice,
         tickets: ticketSlice,
         Users: userSlice,
+        stops: StopsSlice
     }
 })
