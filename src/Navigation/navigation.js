@@ -14,13 +14,15 @@ import { WelcomeScreen } from "../Screens/WelcomeScreen";
 import { RegisterScreen } from "../Screens/RegisterScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
-import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice  } from "@expo/vector-icons";
+import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,FontAwesome5  } from "@expo/vector-icons";
+import { AddcardScreen } from "../Screens/AddcardScreen";
+import { PaymentScreen } from "../Screens/PaymentScreen";
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
   return (
     <Tabs.Navigator 
-      initialRouteName="Map"
+      initialRouteName="HomeB"
       activeColor="#ff8c00"
       barStyle={{
         backgroundColor: "white",
@@ -42,31 +44,15 @@ const MyTabs = () => {
         component={HomeScreen}
         options= {{
          tabBarIcon: ({color}) => {
-           return <Feather name="calendar" size={24} color={color} />
+           return <Feather name="search" size={24} color={color} />
           },
       }} />
-      <Tabs.Screen 
-        name="my account" 
-        component={AccountScreen}
-        options= {{
-          tabBarIcon: ({color}) => {
-            return <Feather name="search" size={24} color={color} />
-          }
-        }} />
-      <Tabs.Screen 
-        name="Test2" 
-        component={RecentTrips}
-        options={{
-          tabBarIcon: ({color}) => {
-            return <Fontisto name="wallet" size={24} color={color} />
-          }
-        }} />
       <Tabs.Screen 
         name="Routes" 
         component={RoutesScreen}
         options={{
           tabBarIcon: ({color}) => {
-            return <Octicons name="gift" size={24} color={color} />
+            return <FontAwesome5 name="route" size={24} color={color} />
           }
         }} />
     </Tabs.Navigator>
@@ -149,7 +135,16 @@ function CustomDrawerContent(props) {
     </DrawerContentScrollView>
   );
 }
-
+const PaymentsNavigation = () => {
+  const Stack = createNativeStackNavigator()
+  return (
+    <Stack.Navigator initialRouteName="PaymentsHome">
+      <Stack.Screen name="PaymentsHome" options={{ headerShown: false }} component={AccountScreen}/>
+      <Stack.Screen name="cards" options={{ headerShown: false }} component={PaymentScreen}/>
+      <Stack.Screen name="addcards" options={{ headerShown: false }} component={AddcardScreen}/>
+    </Stack.Navigator>
+  )
+}
 const PrivateNavigation = () => {
   const Drawer = createDrawerNavigator();
   const Stack = createNativeStackNavigator();
@@ -164,7 +159,7 @@ const PrivateNavigation = () => {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen options={{ headerShown: false }} name="Home"component={MyTabs} />
-      <Drawer.Screen name="MyAccount" options={{ headerShown: false }} component={AccountScreen} />
+      <Drawer.Screen name="MyAccount" options={{ headerShown: false }} component={PaymentsNavigation} />
       <Drawer.Screen name="SwitchMode" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Feedback" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
