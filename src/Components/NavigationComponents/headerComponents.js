@@ -7,15 +7,15 @@ export function AppBar() {
   return (
     <Box w={"full"}>
       <StatusBar bg="#3700B3" barStyle="light-content" />
-      <Box safeAreaTop bg="black" />
-      <HStack h={"16"} bgColor={"yellow.400"} justifyContent={"space-between"}>
+      <Box safeAreaTop bg="blueGray.900"/>
+      <HStack h={"16"} bg="blueGray.900" justifyContent={"space-between"}>
         <IconButton
-          icon={<Icon size="xl" as={MaterialIcons} name="menu" color="black" />}
+          icon={<Icon size="xl" as={MaterialIcons} name="menu" color="white" />}
           onPress={() => navigation.openDrawer()}
           />
-        <Heading alignSelf={"center"}>MyBMTC</Heading>
+        <Heading color="white" alignSelf={"center"}>MyBMTC</Heading>
         <IconButton
-          icon={<Icon size="xl" as={Feather} name="user" color="black" />}
+          icon={<Icon size="xl" as={Feather} name="user" color="white" />}
           onPress={() => navigation.navigate('MyAccount')}/>
       </HStack>
     </Box>

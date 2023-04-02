@@ -10,7 +10,7 @@ const CreditCardSession = () => {
         <Box h={"64"}>
             <HStack h={"20"} justifyContent={"space-between"} alignItems={"center"} px={8}>
                 <Text  fontWeight={"medium"}  fontSize={22} color={"blueGray.700"} >Save Cards</Text>
-                <Text onPress={()=> navigation.navigate("AddCard")} fontWeight={"normal"}  fontSize={18} color={"blueGray.700"} >Add Card</Text>
+                <Text onPress={()=> navigation.navigate("addcards")} fontWeight={"normal"}  fontSize={18} color={"blueGray.700"} >Add Card</Text>
             </HStack>
             <Center flex={1}>
                 <CreditCard/>
@@ -84,7 +84,7 @@ export const HeadingPay = () => {
     return (
         <Box borderBottomRadius={52} h={"80"} bg={"yellow.400"} {...safeAreaProps} px={8}>
                 <Center flexDirection={"row"} height={"10"}>
-                    <Center position={"absolute"} left={0} height={"10"}><Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("HomeD")} /></Center>
+                    <Center position={"absolute"} left={0} height={"10"}><Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("PaymentsHome")} /></Center>
                     <Heading size={"lg"}>Payments</Heading>
                 </Center>
                 <VStack height={"80%"} space={5} alignItems={"center"} justifyContent={"center"}>

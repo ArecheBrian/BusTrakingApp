@@ -17,10 +17,10 @@ export const WelcomeContainer = () => {
       height={"95%"}
     >
       <VStack space={7} h={"50%"} justifyContent={"center"}>
-        <Heading size="4xl" fontSize={"5xl"} color="#33353d">
+        <Heading size="4xl" fontSize={"5xl"} color="white">
           Welcome
         </Heading>
-        <Text fontSize={18}>
+        <Text fontSize={18} color="white">
           Come onboard, join in to experience the new MyBMTC wicht added
           features and improved funtionalities
         </Text>
@@ -38,7 +38,7 @@ export const WelcomeContainer = () => {
 export const WelcomeButtomns = ({bgColor, text, textC ,route}) => {
   const navigation = useNavigation();
   return (
-    <Button  onPress={()=> navigation.navigate(`${route}`)} borderRadius="full" bg={bgColor} w={"40"} h={12}>
+    <Button  onPress={()=> navigation.navigate(`${route}`)} borderRadius="full" bg={bgColor} w={"56"} h={12}>
         <Text color={textC} fontSize={"xl"} fontWeight={"bold"}>{text}</Text>
     </Button>
   );

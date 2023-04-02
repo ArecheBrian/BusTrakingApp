@@ -6,7 +6,7 @@ import { signUpWithEmail } from "../../Supabase/user/RegisterUser";
 
 export const Register = ()=> {
     return(
-        <KeyboardAvoidingView flex={1} bg={"yellow.400"}>
+        <KeyboardAvoidingView flex={1} bg={"blueGray.900"}>
             <LogInHeader 
                 TitleH={"Register"} 
                 TextC={"Exercitation veniam consequat sunt nostrud amet."}

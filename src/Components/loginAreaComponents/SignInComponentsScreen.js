@@ -9,7 +9,7 @@ import { userSession } from "../../Redux/Features/UserSlice";
 export const SignIn = ()=> {
     return(
   
-        <Box flex={1} bg={"yellow.400"}>
+        <Box flex={1} bg={"blueGray.900"}>
             <LogInHeader 
                 TitleH={"Sign In"} 
                 TextC={"Welcome back, Parna. We missed you"}

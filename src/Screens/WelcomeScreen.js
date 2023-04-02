@@ -1,4 +1,4 @@
-import { Box, Center, Heading, VStack} from 'native-base';
+import { Box, Center, Heading, VStack, StatusBar} from 'native-base';
 import { Fontisto } from '@expo/vector-icons';
 import { WelcomeContainer } from '../Components/WelcomeComponents/Components'
 
@@ -13,7 +13,7 @@ export const WelcomeScreen=()=> {
           </Heading>
         </VStack>
       </Box>
-      <Center bg={"yellow.400"} flex={2} borderTopRadius={40}>
+      <Center bg={"blueGray.900"} flex={2} borderTopRadius={40}>
         <WelcomeContainer/>
       </Center>
     </Box>

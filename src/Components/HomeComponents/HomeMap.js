@@ -5,7 +5,7 @@ import theme from "../../Constans/theme";
 
 export const HomeMap = () => {
     return (
-    <Box py="2" w={"90%"} space={2} alignItems="center" flex={5}>
+    <Box py="2" w={"90%"} space={2} alignItems="center" flex={6}>
         <Box w="full" py={3}>
             <Heading fontSize="lg">Current Location</Heading>
             <HStack alignItems={"center"}>
