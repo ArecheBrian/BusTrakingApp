@@ -5,7 +5,7 @@ import MapView, { Marker, Polyline } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusStops } from "../Redux/Features/StopsSlice";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { testRoute, testRoutes2 } from "../Supabase/Maps/test";
+// import { testRoute, testRoutes2 } from "../Supabase/Maps/test";
 import { AppBar } from "../Components/NavigationComponents/headerComponents";
 import MapViewDirections from "react-native-maps-directions";
 import axios from "axios";

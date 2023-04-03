@@ -15,6 +15,7 @@ import { RegisterScreen } from "../Screens/RegisterScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
 import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice  } from "@expo/vector-icons";
+import SearchBar  from './../Screens/SearchBar';
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -64,6 +65,14 @@ const MyTabs = () => {
       <Tabs.Screen 
         name="Routes" 
         component={RoutesScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Octicons name="gift" size={24} color={color} />
+          }
+        }} />
+         <Tabs.Screen 
+        name="Search" 
+        component={SearchBar}
         options={{
           tabBarIcon: ({color}) => {
             return <Octicons name="gift" size={24} color={color} />
