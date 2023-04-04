@@ -34,7 +34,7 @@ export const AccountScreen = () => {
           <VStack h={"70%"} w={"80%"} space={5} mt={5}>
             <HStack space={4} alignItems={"center"}>
               <Feather name="credit-card" size={30} color="black" />
-              <Text fontSize={20} color={"blueGray.800"} onPress={()=> navigation.navigate("Payment")} >Payments</Text>
+              <Text fontSize={20} color={"blueGray.800"} onPress={()=> navigation.navigate("cards")} >Payments</Text>
             </HStack>
             <HStack space={4} alignItems={"center"}>  
               <Feather name="shield" size={30} color="black" />

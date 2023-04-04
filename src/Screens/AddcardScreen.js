@@ -12,7 +12,7 @@ export const AddcardScreen = () => {
     });
     return(
         <Box flex={1} bg={"white"}  {...safeAreaProps} pl={7} pr={9}>
-            <Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("Payment")}/>
+            <Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("cards")}/>
               <VStack flex={1} space={8} mt={8} >
                   <Heading fontSize={25} color={"blueGray.800"} >Add Card</Heading>
                   <Image source={Imagenes.CardImg} alt="Alternate Text" size="lg" />

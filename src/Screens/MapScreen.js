@@ -1,10 +1,10 @@
-import { Button, Pressable, Text } from "native-base";
+import { Actionsheet, Box, Button, IconButton, Pressable, Text, useDisclose } from "native-base";
 import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusStops } from "../Redux/Features/StopsSlice";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 // import { testRoute, testRoutes2 } from "../Supabase/Maps/test";
 import { AppBar } from "../Components/NavigationComponents/headerComponents";
 import MapViewDirections from "react-native-maps-directions";
@@ -31,9 +31,14 @@ export const MapScreen = () => {
   const originJFK = {latitude:18.48307052594377,longitude: -69.9743012539701}
   const destinationJFK = {latitude:18.516268013923927,longitude:-69.84208604752574}
 
+
+  const {
+    isOpen,
+    onOpen,
+    onClose
+  } = useDisclose();
   return (
     <>
-    <AppBar/>
     <View style={styles.container}>
       <MapView style={styles.map}
       region={{
@@ -82,7 +87,7 @@ export const MapScreen = () => {
           strokeColor={"yellow"}
           strokeWidth={3}
         /> */}
-       {/* {state.status === "success" &&
+       {state.status === "success" &&
         state.stopsData.map((item, index)=> {
           return <Marker key={index} coordinate={{latitude: item.lat, longitude:item.lng }}>
             <Pressable h={"7"} w={"7"} bg={"white"} borderRadius={"full"} alignItems={"center"} justifyContent={"center"}>
@@ -90,9 +95,15 @@ export const MapScreen = () => {
             </Pressable>
           </Marker>
         }) 
-       } */}
+       }
        {state.status === "pending" && console.log("espera")}
        </MapView>
+       <Actionsheet isOpen={isOpen} onClose={onClose} disableOverlay>
+        <Actionsheet.Content>
+          <Actionsheet.Item startIcon={<Ionicons name="options-outline" size={24} color="black" />}>Stops</Actionsheet.Item>
+          <Actionsheet.Item>Routes</Actionsheet.Item>
+        </Actionsheet.Content>
+      </Actionsheet>
     </View>
     </>
   
