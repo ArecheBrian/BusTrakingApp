@@ -1,87 +1,35 @@
 import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea} from "native-base"
-import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
+import { Entypo, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { PlaceRow } from "../SearchComponents/PlaceRow";
+import { GooglePlaces, GooglePlaces2 } from "../SearchComponents/GooglePlaces";
 
 export const SearchCard = () => {
     return (
-    <Box flex={1} bg={"blueGray.50"}>
-        <GooglePlacesAutocomplete
-      placeholder='Pick up Location'
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      enablePoweredByContainer={false}
-      suppressDefaultStyles
-      styles={{
-        container: {
-          position: "absolute",
-          left: 10,
-          right: 10,
-        },
-        listView: {
-          position: "absolute",
-          top: 105,
-        },
-        separator: {
-            backgroundColor: "#efefef",
-            height: 2,
-        },
-        textInput: {
-            padding: 5,
-            borderRadius: 4,
-            backgroundColor: '#eee',
-            marginVertical: 5,
-            marginLeft: 20,
-          },
-      }}
-      query={{
-        key: 'AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4',
-        language: 'en',
-      }}
-      renderRow={(data) => <PlaceRow data={data} /> }
-    />
-    <GooglePlacesAutocomplete
-      placeholder='Where to?'
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      enablePoweredByContainer={false}
-      suppressDefaultStyles
-      styles={{
-        container: {
-          position: "absolute",
-          top: 55,
-          left: 10,
-          right: 10,
-        },
-        separator: {
-            backgroundColor: "#efefef",
-            height: 2,
-        },
-        textInput: {
-            padding: 5,
-            borderRadius: 4,
-            backgroundColor: '#eee',
-            marginVertical: 5,
-            marginLeft: 20,
-          },
-      }}
-      query={{
-        key: 'AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4',
-        language: 'en',
-      }}
-
-      renderRow={(data) => <PlaceRow data={data} /> }
-    />
-
-    <Box w={2} h={2} bg="black" position={"absolute"} top={5} left={3} borderRadius={5}></Box>
-    <Box w={0.5} h={35} bg="grey" position={"absolute"} top={34} left={4}></Box>
-    <Box w={2} h={2} bg="black" position={"absolute"} top={75} left={3}></Box>
-
-
-    </Box>
+    <Box>
+      <HStack w={"90%"} bg={"white"} borderRadius={18} shadow={4}>
+      <VStack space={3} alignItems={"center"} flex={1} justifyContent={"center"}>
+          <Ionicons name="location" size={24} color="black" />
+          <MaterialCommunityIcons name="dots-vertical" size={22} color="black"/>
+          <FontAwesome name="location-arrow" size={18} color="black" />
+      </VStack>
+      <Box flex={4} py={2}>
+          <VStack space={2}>
+              <Box>
+                  <Text color={"gray.400"}>From</Text>
+                  <GooglePlaces/>
+              </Box>
+              <Divider color={"gray.400"} />
+              <Box>
+                <Text color={"gray.400"}>To</Text>
+                <GooglePlaces2/>
+              </Box>
+      </VStack>
+      </Box>
+      <Center flex={1}>
+          <Feather name="repeat" size={20} color="black" />
+      </Center>
+  </HStack>
+  </Box>
     )
 }
