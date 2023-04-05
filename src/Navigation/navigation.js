@@ -56,14 +56,14 @@ const MyTabs = () => {
             return <FontAwesome5 name="route" size={24} color={color} />
           }
         }} />
-         <Tabs.Screen 
+         {/* <Tabs.Screen 
         name="Search" 
         component={SearchBar}
         options={{
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
           }
-        }} />
+        }} /> */}
          
     </Tabs.Navigator>
   );
@@ -176,7 +176,9 @@ const PrivateNavigation = () => {
       <Drawer.Screen name="Feedback" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
+      <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
     </Drawer.Navigator>
+
   );
 };
 
@@ -184,7 +186,7 @@ const PublicNavigation = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator initialRouteName="Welcome" 
-    screenOptions={{ headerStyle:
+    screenOptions={{ headerStyle:-
     {
       backgroundColor: "#ffd42f",
           width: "75%",
