@@ -18,6 +18,7 @@ import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,Fon
 import { SearchBar }  from './../Screens/SearchBar';
 import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
+import { SearchMap } from "../Screens/SearchMap";
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -56,14 +57,6 @@ const MyTabs = () => {
             return <FontAwesome5 name="route" size={24} color={color} />
           }
         }} />
-         {/* <Tabs.Screen 
-        name="Search" 
-        component={SearchBar}
-        options={{
-          tabBarIcon: ({color}) => {
-            return <FontAwesome5 name="route" size={24} color={color} />
-          }
-        }} /> */}
          
     </Tabs.Navigator>
   );
@@ -177,6 +170,7 @@ const PrivateNavigation = () => {
       <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
       <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
+      <Stack.Screen name="SearchMap" options={{ headerShown: false }} component={SearchMap}/>
     </Drawer.Navigator>
 
   );
