@@ -1,6 +1,4 @@
 import { HStack, Box, StatusBar, IconButton, Icon, Heading, useDisclose } from "native-base"
-import { Feather } from '@expo/vector-icons';
-
 
 export const HeaderInfo = () => {
     const {

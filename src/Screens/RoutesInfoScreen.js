@@ -2,7 +2,6 @@ import { Box, Actionsheet, IconButton, Heading, HStack, StatusBar, useDisclose, 
 import { Feather } from '@expo/vector-icons';
 import MapView from "react-native-maps";
 import { StyleSheet, View } from "react-native";
-import StepIndicator from 'react-native-step-indicator';
 import { Dimensions } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 

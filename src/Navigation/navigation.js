@@ -15,6 +15,7 @@ import { RegisterScreen } from "../Screens/RegisterScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
 import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,FontAwesome5  } from "@expo/vector-icons";
+import { SearchBar }  from './../Screens/SearchBar';
 import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
 import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
@@ -55,8 +56,16 @@ const MyTabs = () => {
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
           }
-        }}
-         />
+        }} />
+         {/* <Tabs.Screen 
+        name="Search" 
+        component={SearchBar}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <FontAwesome5 name="route" size={24} color={color} />
+          }
+        }} /> */}
+         
     </Tabs.Navigator>
   );
 };
@@ -157,6 +166,8 @@ const PaymentsNavigation = () => {
     </Stack.Navigator>
   )
 }
+
+
 const PrivateNavigation = () => {
   const Drawer = createDrawerNavigator();
   const Stack = createNativeStackNavigator();
@@ -176,7 +187,9 @@ const PrivateNavigation = () => {
       <Drawer.Screen name="Feedback" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
       <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
+      <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
     </Drawer.Navigator>
+
   );
 };
 
@@ -184,7 +197,7 @@ const PublicNavigation = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator initialRouteName="Welcome" 
-    screenOptions={{ headerStyle:
+    screenOptions={{ headerStyle:-
     {
       backgroundColor: "#ffd42f",
           width: "75%",
