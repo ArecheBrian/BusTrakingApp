@@ -11,6 +11,21 @@ import MapViewDirections from "react-native-maps-directions";
 import axios from "axios";
 import { getDrawerStatusFromState } from "@react-navigation/drawer";
 
+
+
+function renderMarker(waypoint) {
+  return (
+    <Marker
+      key={waypoint.key}
+      coordinate={waypoint.coordinates}
+      anchor={{ x: 0.5, y: 0.5 }}
+    >
+      <Box size={24} bg={"amber.300"}>mmh</Box>
+      <Text>holaa</Text>
+    </Marker>
+  );
+}
+
 export const MapScreen = () => {
 
   const state = useSelector((state)=> state?.stops)
@@ -19,17 +34,17 @@ export const MapScreen = () => {
     dispatch(fetchBusStops())
   },[])
 
-  const origin27F = {latitude: 18.495509108163855, longitude: -69.9994633355392}
-  const destination27F = {latitude: 18.48148840699548, longitude: -69.77673818859738}
+  // const origin27F = {latitude: 18.495509108163855, longitude: -69.9994633355392}
+  // const destination27F = {latitude: 18.48148840699548, longitude: -69.77673818859738}
   
-  const originAbL = {latitude:18.495393308142795,longitude:-69.96517074691565}
-  const destinationAbL = {latitude:18.458109216399393,longitude:-69.93173969481333}
+  // const originAbL = {latitude:18.495393308142795,longitude:-69.96517074691565}
+  // const destinationAbL = {latitude:18.458109216399393,longitude:-69.93173969481333}
 
-  // const originIndp = {latitude:18.427645008973794,longitude:-70.00613511944744}
-  // const destinationIndp = {latitude:18.48160649419373,longitude:-69.77778741056987}
+  const originIndp = {latitude:18.427645008973794,longitude:-70.00613511944744}
+  const destinationIndp = {latitude:18.48160649419373,longitude:-69.77778741056987}
 
-  const originJFK = {latitude:18.48307052594377,longitude: -69.9743012539701}
-  const destinationJFK = {latitude:18.516268013923927,longitude:-69.84208604752574}
+  // const originJFK = {latitude:18.48307052594377,longitude: -69.9743012539701}
+  // const destinationJFK = {latitude:18.516268013923927,longitude:-69.84208604752574}
 
 
   const {
@@ -47,6 +62,19 @@ export const MapScreen = () => {
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
       }}>
+        <MapViewDirections
+          origin={originIndp}
+          destination={destinationIndp}
+          waypoints={[
+            {latitude:18.426759, longitude: -70.006265},
+            {latitude:18.426913, longitude: -69.994131},
+          ]}
+          apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
+          strokeColor="red"
+          strokeWidth={4}
+          renderMarker={renderMarker}
+        />
+
         {/* <MapViewDirections
           origin={origin27F}
           destination={destination27F}
@@ -94,10 +122,11 @@ export const MapScreen = () => {
               <MaterialCommunityIcons name="bus-stop" size={20} color="#CD0404" />
             </Pressable>
           </Marker>
-        }) 
+        })
        }
        {state.status === "pending" && console.log("espera")}
        </MapView>
+       {/* <Button onPress={onOpen}>holaaa</Button> */}
        <Actionsheet isOpen={isOpen} onClose={onClose} disableOverlay>
         <Actionsheet.Content>
           <Actionsheet.Item startIcon={<Ionicons name="options-outline" size={24} color="black" />}>Stops</Actionsheet.Item>

@@ -11,7 +11,7 @@ export const GooglePlaces = () => {
         placeholder='Pick up Location'
         onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
-            console.log(data, details);
+            console.log(details);
         }} 
         enablePoweredByContainer={false}
         suppressDefaultStyles
