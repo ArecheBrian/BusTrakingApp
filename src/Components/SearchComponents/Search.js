@@ -3,8 +3,10 @@ import { Entypo, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ioni
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { PlaceRow } from "../SearchComponents/PlaceRow";
 import { GooglePlaces, GooglePlaces2 } from "../SearchComponents/GooglePlaces";
+import { useNavigation } from '@react-navigation/native';
 
 export const SearchCard = () => {
+  const navigation = useNavigation();
     return (
               <Box py={5} >
                 <VStack>
@@ -24,7 +26,7 @@ export const SearchCard = () => {
                   </HStack>
                 </VStack>
                 <VStack alignItems={"center"}  top={135}>
-                    <Button size={"sm"} borderRadius={30} bg={"white"}><Text color={"blueGray.900"} fontSize={15}>Trazar Ruta</Text></Button>
+                    <Button onPress={()=> navigation.navigate("SearchMap")} size={"sm"} borderRadius={30} bg={"white"}><Text color={"blueGray.900"} fontSize={15}>Trace Route</Text></Button>
                 </VStack>
                 <Box top={165}>
                         <Divider  color={"gray.400"} />
