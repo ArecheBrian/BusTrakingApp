@@ -1,10 +1,11 @@
-import { Box, Heading, HStack } from "native-base"
+import { Box, Heading, HStack, Pressable } from "native-base"
 import { Ionicons} from '@expo/vector-icons';
 import MapView, { Marker } from "react-native-maps";
 import theme from "../../Constans/theme";
 import { useEffect } from "react";
 import { getLocation } from "../../Redux/Features/LocationSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const HomeMap = () => {
     const state = useSelector((state)=> state.location)
@@ -31,7 +32,12 @@ export const HomeMap = () => {
             longitudeDelta: 0.05,
         }}
         >
-        <Marker coordinate={{latitude: state.userLocation.latitude,longitude:state.userLocation.longitude}}></Marker>
+        <Marker coordinate={{latitude: state.userLocation.latitude,longitude:state.userLocation.longitude}}>
+            <Pressable h={"10"}  w={"10"} bg={"white"} borderRadius={"full"} alignItems={"center"} justifyContent={"center"}>
+                <MaterialIcons name="location-history" size={35}
+                      color="#009EFF" />
+            </Pressable>
+        </Marker>
         </MapView>: <MapView style={{ width:"100%", height: "100%", borderRadius: 20}}/>
         }
         </Box>
