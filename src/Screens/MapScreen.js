@@ -166,7 +166,7 @@ export const MapScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 20,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",

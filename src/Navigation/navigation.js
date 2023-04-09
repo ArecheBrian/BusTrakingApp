@@ -14,12 +14,13 @@ import { WelcomeScreen } from "../Screens/WelcomeScreen";
 import { RegisterScreen } from "../Screens/RegisterScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
-import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,FontAwesome5  } from "@expo/vector-icons";
+import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,FontAwesome5,FontAwesome } from "@expo/vector-icons";
 import { SearchBar }  from './../Screens/SearchBar';
 import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
 import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
 import { SearchMap } from "../Screens/SearchMap";
+import { BusDriverScreen } from "../Screens/BusDriverScreen";
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -56,6 +57,14 @@ const MyTabs = () => {
         options={{
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
+          }
+        }} />
+        <Tabs.Screen 
+        name="Bus" 
+        component={BusDriverScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <FontAwesome name="drivers-license-o" size={24} color="black" />
           }
         }} />
          
@@ -136,6 +145,7 @@ function CustomDrawerContent(props) {
         label="About us"
         onPress={() => {props.navigation.navigate('Aboutus')}}
       />
+      
       <DrawerContentScrollView {...props}>
         <Box mt={"20"}>
       <DrawerItem
@@ -182,6 +192,7 @@ const PrivateNavigation = () => {
       <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
       <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
       <Stack.Screen name="SearchMap" options={{ headerShown: false }} component={SearchMap}/>
+      <Stack.Screen name="BusDriverScreen" options={{ headerShown: false }} component={BusDriverScreen}/>
     </Drawer.Navigator>
 
   );
