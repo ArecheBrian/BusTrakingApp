@@ -1,5 +1,6 @@
-import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea} from "native-base"
+import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea, Pressable} from "native-base"
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
 export const RecentTripsCrad = () => {
     return (
@@ -61,8 +62,10 @@ export const FromToCard = () => {
 }
 
 export const RoutesCard = ({Color, Name}) => {
+    const navigation = useNavigation()
     return (
-        <HStack w={"90%"} h={"20"} bg={"white"} borderRadius={18} shadow={4} pl={5} alignItems={"center"} space={3}>
+        <Pressable w={"full"} alignItems={"center"} onPress={()=> navigation.navigate("RoutesInfo")}>
+            <HStack w={"90%"} h={"20"} bg={"white"} borderRadius={18} shadow={4} pl={5} alignItems={"center"} space={3}>
             <Center bg={"white"} size={58} borderRadius={100} shadow={3}>
                 <FontAwesome5 name="bus" size={24} color={`${Color}`}/>
             </Center>
@@ -71,6 +74,8 @@ export const RoutesCard = ({Color, Name}) => {
                 <Text color={"blueGray.400"}>Ray street / old college</Text>
             </VStack>
         </HStack>
+        </Pressable>
+
     )
 }
 

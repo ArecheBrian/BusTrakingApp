@@ -18,6 +18,7 @@ import { Fontisto,Octicons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,Fon
 import { SearchBar }  from './../Screens/SearchBar';
 import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
+import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
 import { SearchMap } from "../Screens/SearchMap";
 
 const MyTabs = () => {
@@ -51,7 +52,7 @@ const MyTabs = () => {
       }} />
       <Tabs.Screen 
         name="Routes" 
-        component={RoutesScreen}
+        component={RoutesNavigation}
         options={{
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
@@ -61,6 +62,16 @@ const MyTabs = () => {
     </Tabs.Navigator>
   );
 };
+
+const RoutesNavigation = () =>{
+  const Stack = createNativeStackNavigator()
+  return (
+    <Stack.Navigator initialRouteName="RoutesL">
+      <Stack.Screen name="RoutesL" component={RoutesScreen} options={{ headerShown: false}}/>
+      <Stack.Screen name="RoutesInfo" component={RoutesInfoScreen} options={{ headerShown: false}}/>
+    </Stack.Navigator>
+  )
+}
 
 function CustomDrawerContent(props) {
   const dispatch = useDispatch();

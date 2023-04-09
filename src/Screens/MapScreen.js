@@ -4,9 +4,9 @@ import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusStops } from "../Redux/Features/StopsSlice";
-
 import MapViewDirections from "react-native-maps-directions";
 import {FontAwesome5,FontAwesome,MaterialCommunityIcons,MaterialIcons,Ionicons} from "@expo/vector-icons";
+
 export const MapScreen = () => {
   const state = useSelector((state) => state?.stops);
   const dispatch = useDispatch();
@@ -30,8 +30,8 @@ export const MapScreen = () => {
     longitude: -69.93173969481333,
   };
 
-  // const originIndp = {latitude:18.427645008973794,longitude:-70.00613511944744}
-  // const destinationIndp = {latitude:18.48160649419373,longitude:-69.77778741056987}
+  const originIndp = {latitude:18.427645008973794,longitude:-70.00613511944744}
+  const destinationIndp = {latitude:18.48160649419373,longitude:-69.77778741056987}
 
   const originJFK = {
     latitude: 18.48307052594377,
@@ -128,7 +128,9 @@ export const MapScreen = () => {
                 strokeWidth={3} />
                 </> 
           )}
-          {state.status === "success" &&
+          {showMarker && (
+            <>
+            {state.status === "success" &&
             state.stopsData.map((item, index) => {
               return (
                 <Marker
@@ -152,6 +154,9 @@ export const MapScreen = () => {
                 </Marker>
               );
           })}
+            </>
+          )
+          }
           {state.status === "pending" && console.log("espera")}
         </MapView>
       </View>
@@ -161,6 +166,7 @@ export const MapScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 50,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
