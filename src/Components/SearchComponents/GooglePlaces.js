@@ -2,16 +2,29 @@ import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { PlaceRow } from "../SearchComponents/PlaceRow";
 import { Box , VStack , Button , Text } from 'native-base';
+import { useDispatch } from 'react-redux';
+import { setDestination , setOrigin } from '../../Redux/Features/SearchSlice';
+
 
 export const GooglePlaces = () => {
+
+    const dispatch = useDispatch();
+
     return (
     <Box>
 
     <GooglePlacesAutocomplete
         placeholder='Pick up Location'
+        nearbyPlacesAPI='GooglePlacesSearch'
+        returnKeyType={'search'}
         onPress={(data, details = null) => {
-            // 'details' is provided when fetchDetails = true
-            console.log(details);
+            dispatch(
+                setOrigin({
+                    location: details.geometry.location,
+                    description: data.description
+                })
+            
+            )
         }} 
         enablePoweredByContainer={false}
         suppressDefaultStyles
@@ -44,6 +57,7 @@ export const GooglePlaces = () => {
                 
             }
     }}
+    fetchDetails={true}
     query={{
         key: 'AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4',
         language: 'en',
@@ -57,13 +71,21 @@ export const GooglePlaces = () => {
 }
 
 export const GooglePlaces2 = () => {
+    const dispatch = useDispatch();
     return (
     <Box>
     <GooglePlacesAutocomplete
         placeholder='Where to?'
+        nearbyPlacesAPI='GooglePlacesSearch'
+        returnKeyType={'search'}
         onPress={(data, details = null) => {
-            // 'details' is provided when fetchDetails = true
-            console.log(data, details);
+            dispatch(
+                setDestination({
+                    location: details.geometry.location,
+                    description: data.description
+                })
+            
+            )
         }} 
         enablePoweredByContainer={false}
         suppressDefaultStyles
@@ -96,7 +118,8 @@ export const GooglePlaces2 = () => {
                 
             }
               }}
-        query={{
+              fetchDetails={true}
+            query={{
             key: 'AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4',
             language: 'en',
         }}

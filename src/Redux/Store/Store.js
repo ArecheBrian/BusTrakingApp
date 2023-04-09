@@ -4,6 +4,7 @@ import userSlice from "../Features/UserSlice";
 import ticketSlice from "../Features/TicketSlice"
 import StopsSlice from "../Features/StopsSlice";
 import LocationSlice from "../Features/LocationSlice";
+import SearchSlice from "../Features/SearchSlice";
 
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
         tickets: ticketSlice,
         Users: userSlice,
         stops: StopsSlice,
-        location: LocationSlice
+        location: LocationSlice,
+        Search: SearchSlice
     }
 })
