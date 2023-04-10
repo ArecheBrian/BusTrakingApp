@@ -20,6 +20,7 @@ import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
 import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
 import { SearchMap } from "../Screens/SearchMap";
+import { ScannerScreen } from "../Screens/ScannerScreen"
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -42,20 +43,28 @@ const MyTabs = () => {
           return <Feather name="map" size={24} color={color} />
         }
       }} />
-      <Tabs.Screen 
+      {/* <Tabs.Screen 
         name="HomeB" 
         component={HomeScreen}
         options= {{
          tabBarIcon: ({color}) => {
            return <Feather name="search" size={24} color={color} />
           },
-      }} />
-      <Tabs.Screen 
+      }} /> */}
+      {/* <Tabs.Screen 
         name="Routes" 
         component={RoutesNavigation}
         options={{
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
+          }
+        }} /> */}
+        <Tabs.Screen 
+        name="Scanner" 
+        component={ScannerScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <MaterialIcons name="qr-code-scanner" size={24} color="black" />
           }
         }} />
          
