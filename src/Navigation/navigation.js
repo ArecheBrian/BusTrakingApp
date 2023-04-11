@@ -20,6 +20,8 @@ import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
 import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
 import { SearchMap } from "../Screens/SearchMap";
+import { ScannerScreen } from "../Screens/ScannerScreen"
+import { DriverMapScreen } from "../Screens/DriverMapScreen";
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -36,12 +38,12 @@ const MyTabs = () => {
       screenOptions={{
         tabBarLabel: false,
       }}>
-      <Tabs.Screen name="Map" component={MapScreen}
+      {/* <Tabs.Screen name="Map" component={MapScreen}
         options={{
          tabBarIcon: ({color}) => {
           return <Feather name="map" size={24} color={color} />
         }
-      }} />
+      }} /> */}
       <Tabs.Screen 
         name="HomeB" 
         component={HomeScreen}
@@ -50,12 +52,28 @@ const MyTabs = () => {
            return <Feather name="search" size={24} color={color} />
           },
       }} />
-      <Tabs.Screen 
+      {/* <Tabs.Screen 
         name="Routes" 
         component={RoutesNavigation}
         options={{
           tabBarIcon: ({color}) => {
             return <FontAwesome5 name="route" size={24} color={color} />
+          }
+        }} /> */}
+        <Tabs.Screen 
+        name="Scanner" 
+        component={ScannerScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <MaterialIcons name="qr-code-scanner" size={24} color={color} />
+          }
+        }} />
+        <Tabs.Screen 
+        name="DriverMap" 
+        component={DriverMapScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <FontAwesome5 name="map-marked-alt" size={24} color={color} />
           }
         }} />
          
