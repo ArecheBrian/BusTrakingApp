@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { AppBar } from "../Components/NavigationComponents/headerComponents";
+import { Box } from "native-base";
+import { Scanner } from '../Components/ScannerComponents/ScannerComponents';
 
 export  const ScannerScreen = () => {
 
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [text, setText] = useState('Not yet scanned')
+  const [text, setText] = useState('Scanner Results')
 
   const askForCameraPermission = () => {
     (async () => {
@@ -31,30 +32,39 @@ export  const ScannerScreen = () => {
   // Check permissions and return the screens
   if (hasPermission === null) {
     return (
-      <View style={styles.container}>
+      <Box flex={1} bg={"blueGray.50"}>
+      <Scanner/>
+      <Box style={styles.container}>
         <Text>Requesting for camera permission</Text>
-      </View>)
+      </Box>
+      </Box>)
   }
   if (hasPermission === false) {
     return (
-      <View style={styles.container}>
+      <Box flex={1} bg={"blueGray.50"}>
+      <Scanner/>
+      <Box style={styles.container}>
         <Text style={{ margin: 10 }}>No access to camera</Text>
         <Button title={'Allow Camera'} onPress={() => askForCameraPermission()} />
-      </View>)
+      </Box>
+      </Box>)
   }
 
-  // Return the View
   return (
-    <View style={styles.container}>
-      <View style={styles.barcodebox}>
+    // Return the View
+    <Box flex={1} bg={"blueGray.50"}>
+      <Scanner/>
+    <Box style={styles.container}>
+      <Box style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={{ height: 400, width: 400 }} />
-      </View>
+      </Box>
       <Text style={styles.maintext}>{text}</Text>
 
       {scanned && <Button title={'Scan again?'} onPress={() => setScanned(false)} color='tomato' />}
-    </View>
+    </Box>
+    </Box>
   );
 }
 
