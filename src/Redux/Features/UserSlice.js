@@ -8,7 +8,7 @@ export const userSession = createAsyncThunk(
     async()=> {
         try {
             const session = await signInWithEmail()
-            if (session) return session
+            if (session.session) return session
         } catch(error){
             console.log("error fetching products", err, err.message);
         } 

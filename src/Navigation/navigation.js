@@ -20,6 +20,8 @@ import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
 import { RoutesInfoScreen } from "../Screens/RoutesInfoScreen";
 import { SearchMap } from "../Screens/SearchMap";
+import { useEffect } from "react";
+import { getUserProfile } from "../Redux/Features/ProfileSlice";
 
 const MyTabs = () => {
   const Tabs = createMaterialBottomTabNavigator();
@@ -164,26 +166,46 @@ const PaymentsNavigation = () => {
 const PrivateNavigation = () => {
   const Drawer = createDrawerNavigator();
   const Stack = createNativeStackNavigator();
-  return (
-    <Drawer.Navigator
-      screenOptions={{
-        drawerStyle: {
-          backgroundColor: "#ffd42f",
-          width: "75%",
-        },
-      }}
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
-    >
-      <Drawer.Screen options={{ headerShown: false }} name="Home"component={MyTabs} />
-      <Drawer.Screen name="MyAccount" options={{ headerShown: false }} component={PaymentsNavigation} />
-      <Drawer.Screen name="SwitchMode" options={{ headerShown: false }}component={MyTabs} />
-      <Drawer.Screen name="Feedback" options={{ headerShown: false }}component={MyTabs} />
-      <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
-      <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
-      <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
-      <Stack.Screen name="SearchMap" options={{ headerShown: false }} component={SearchMap}/>
-    </Drawer.Navigator>
+  const state = useSelector((state) => state.Users);
+  const Pstate = useSelector((state)=> state.profile)
+  const dispatch = useDispatch()
+  console.log(Pstate)
+  console.log(state.session.session.user.id)
+  const id = state.session.session.user.id
+  useEffect(()=>{
+    dispatch(getUserProfile(id))
+  },[])
 
+
+  return (
+    <>
+    {Pstate.status === "success"?
+      Pstate.profileData[0].rol === "conductor"?
+      <Box flex={1} bg={"amber.900"}>Conductor</Box>
+    :
+    <Drawer.Navigator
+    screenOptions={{
+      drawerStyle: {
+        backgroundColor: "#ffd42f",
+        width: "75%",
+      },
+    }}
+    drawerContent={(props) => <CustomDrawerContent {...props} />}
+  >
+    <Drawer.Screen options={{ headerShown: false }} name="Home"component={MyTabs} />
+    <Drawer.Screen name="MyAccount" options={{ headerShown: false }} component={PaymentsNavigation} />
+    <Drawer.Screen name="SwitchMode" options={{ headerShown: false }}component={MyTabs} />
+    <Drawer.Screen name="Feedback" options={{ headerShown: false }}component={MyTabs} />
+    <Drawer.Screen name="Help" options={{ headerShown: false }}component={MyTabs} />
+    <Drawer.Screen name="Aboutus" options={{ headerShown: false }}component={MyTabs} />
+    <Stack.Screen name="Search" options={{ headerShown: false }} component={SearchBar}/>
+    <Stack.Screen name="SearchMap" options={{ headerShown: false }} component={SearchMap}/>
+  </Drawer.Navigator>
+    
+    :
+    <Box flex={1} bg={"red.200"}>holaaa</Box>
+    }
+    </>
   );
 };
 
@@ -221,7 +243,9 @@ export const BusTrakingApp = () => {
   const session = state.session;
   return (
     <NavigationContainer>
-      {session ? <PrivateNavigation /> : <PublicNavigation />}
+      {session ? 
+      <PrivateNavigation /> 
+      : <PublicNavigation />}
     </NavigationContainer>
   );
 };

@@ -1,6 +1,8 @@
 import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea, Pressable} from "native-base"
 import { FontAwesome5, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
+import { getRoutes } from "../../Supabase/Maps/getRoutes";
+import { useEffect } from "react";
 
 export const RecentTripsCrad = () => {
     return (
@@ -61,10 +63,16 @@ export const FromToCard = () => {
     )
 }
 
-export const RoutesCard = ({Color, Name}) => {
+export const RoutesCard = ({Color, Name, Origen, Destino, Id}) => {
+    const datos = {
+        origen: Origen,
+        destino: Destino,
+        id: Id,
+        name: Name
+      };    
     const navigation = useNavigation()
     return (
-        <Pressable w={"full"} alignItems={"center"} onPress={()=> navigation.navigate("RoutesInfo")}>
+        <Pressable w={"full"} alignItems={"center"} onPress={()=> navigation.navigate("RoutesInfo",datos)}>
             <HStack w={"90%"} h={"20"} bg={"white"} borderRadius={18} shadow={4} pl={5} alignItems={"center"} space={3}>
             <Center bg={"white"} size={58} borderRadius={100} shadow={3}>
                 <FontAwesome5 name="bus" size={24} color={`${Color}`}/>
