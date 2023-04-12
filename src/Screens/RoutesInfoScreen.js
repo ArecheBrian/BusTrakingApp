@@ -23,23 +23,6 @@ export const RoutesInfoScreen =({route})=> {
   const { isOpen, onOpen, onClose} = useDisclose()
   const { origen, destino, id, name } = route.params;
   const [time, setTime] = useState(null)
-  // const [bus, setBus] = useState(null)
-// la mejor funcion del mundo 
-  // const getLocationUpdate = async ()=>{
-  //   let {status} = await Location.requestForegroundPermissionsAsync();
-  //   if(status !== 'granted') {
-  //       alert('Noooo ')
-  //       return
-  //   }
-  //   const location = await Location.watchPositionAsync({accuracy: Location.Accuracy.BestForNavigation, timeInterval: 3000, distanceInterval: 10}, (location)=>{
-  //     const { latitude,longitude} = location.coords
-  //     console.log(latitude,longitude)
-  //     setBus({latitude, longitude})
-  //   })
-  // }
-  // useEffect(()=>{
-  //   getLocationUpdate()
-  // },[])
   const waypoints = {latitude:18.4732594673046 , longitude: -69.852133474418}
     return (
         <Box flex={1} bg={"blueGray.500"}>

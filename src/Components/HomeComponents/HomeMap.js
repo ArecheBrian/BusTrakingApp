@@ -13,6 +13,7 @@ export const HomeMap = () => {
     useEffect(()=>{
         dispatch(getLocation())
     },[])
+    console.log(state.userLocation)
     return (
     <Box py="2" w={"90%"} space={2} alignItems="center" flex={6}>
         <Box w="full" py={3}>

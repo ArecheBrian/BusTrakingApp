@@ -2,27 +2,29 @@ import { Box, Heading, Avatar ,HStack, Center, useSafeArea ,Text, VStack , Butto
 import { Feather, MaterialIcons , MaterialCommunityIcons, Ionicons} from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import {DrawerActions} from '@react-navigation/native';
+import { useSelector } from "react-redux";
 
 
 export const AccountScreen = () => {
   const navigation = useNavigation();
+  const state = useSelector((state)=> state.Users)
 
   const safeAreaProps = useSafeArea({
     safeAreaTop: true,
   });
     return (
-      <Box flex={1} bg={"yellow.400"} {...safeAreaProps}>
-         <Box w={"full"} h={10} bg={"yellow.400"}>
+      <Box flex={1} bg={"blueGray.900"} {...safeAreaProps}>
+         <Box w={"full"} h={10} bbg={"blueGray.900"}>
          <Box flexDirection={"row"} w={'full'} justifyContent={"space-around"}>
           <Box pt={5} >
-            <Ionicons name="md-chevron-back-outline" size={24} color="black" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+            <Ionicons name="md-chevron-back-outline" size={24} color="white" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
           </Box>
           <Center h={20}>
-            <Heading size={'md'}>Enmanuelle</Heading>
-            <Heading size={'sm'} fontWeight={"bold"} color={"blueGray.700"}>EnmanuelleML@outlook.com</Heading>
+            <Heading size={'md'} color={"white"}>{state.session.session.user.user_metadata.full_name}</Heading>
+            <Heading size={'sm'} fontWeight={"bold"} color={"white"}>{state.session.session.user.email}</Heading>
           </Center>
           <Box pt={5}>
-            <Feather name="edit-2" size={24} color="black" />
+            <Feather name="edit-2" size={24} color="white" />
           </Box>
          </Box>
          </Box>
