@@ -11,88 +11,90 @@ import { Ionicons } from '@expo/vector-icons';
 import { useEffect } from "react-native"
 import { Top } from "../Components/SearchComponents/TopComponent";
 import { Box, } from "native-base"
+import { getLocation } from "../Redux/Features/LocationSlice";
+import { useDispatch } from "react-redux";
+
 
 export const SearchMap = () => {
 
+  const state = useSelector((state)=> state.location)
+  const {latitude, longitude} = state.userLocation
+  const dispatch = useDispatch();
 
     const origin = useSelector(selectOrigin)
     const destination = useSelector(selectDestination)
     const mapRef = useRef(null);
     const navigation = useNavigation();
 
-    // useEffect(() => {
-    //     if (!origin || !destination ) return; 
-
-    //     mapRef.current.fitToSuppliedMakers(["origin", 'destination'],{
-    //         edgePadding: { top: 50, right: 50, bottom: 50 , left: 50},
-    //     });
-    // }, [origin, destination]);
-
-    
- 
   return (
-    <Box>
-        <Top/>
-      <MapView 
-      ref={mapRef}
-      style={styles.map}
-      initialRegion={{
-        latitude: origin.location.lat,
-        longitude: origin.location.lng,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
-      }}
-      >
 
-        {origin && destination && (
+    <Box flex={1} w="full" overflow={"hidden"} rounded="3xl">
+        {state.status === "success"?
+    <MapView ref={mapRef} style={styles.map}
+    region={{
+        latitude:state.userLocation.latitude,
+        longitude:state.userLocation.longitude,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+    }}
+    showsUserLocation={true}
+    userLocationPriority={'high'}
+    followsUserLocation={true}
+    userLocationFastestInterval={5000}
+    >
 
-            <MapViewDirections
-                origin={origin.description}
-                destination={destination.description}
-                apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
-                mode={"TRANSIT"}
-                strokeColor={"red"}
-                strokeWidth={4}
-                optimizeWaypoints={true}
-                onReady={result => {
-                    mapRef.current.fitToCoordinates(result.coordinates, {
-                        edgePadding: {
-                            right: 30,
-                            bottom: 300,
-                            left: 30,
-                            top:100
-                        }
-                    })
-                  }}
-                
-            />
-        )}
-        {origin?.location && (
-            <Marker
-                coordinate={{
-                    latitude: origin.location.lat,
-                    longitude: origin.location.lng,
-                }}
-                title="Origin"
-                description={origin.description}
-                identifier="origin"
+{state.userLocation && destination && (
 
-            />
-        )}
-        {destination?.location && (
-            <Marker
-                coordinate={{
-                    latitude: destination.location.lat,
-                    longitude: destination.location.lng,
-                }}
-                title="destination"
-                description={destination.description}
-                identifier="destination"
+        <MapViewDirections
+        ma
+            origin={state.userLocation}
+            destination={destination.description}
+            apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
+            mode={"TRANSIT"}
+            strokeColor={"red"}
+            strokeWidth={4}
+            optimizeWaypoints={true}
+            onReady={result => {
+                mapRef.current.fitToCoordinates(result.coordinates, {
+                    edgePadding: {
+                        right: 30,
+                        bottom: 300,
+                        left: 30,
+                        top:100
 
-            />
-        )}
-       </MapView>
-       </Box>
+                    }
+                })
+              }}
+            
+        />
+    )}
+    {state.userLocation?.location && (
+        <Marker
+            coordinate={{
+                latitude: state.userLocation.latitude,
+                longitude: state.userLocation.longitude,
+            }}
+            title="Origin"
+            description={state.userLocation.description}
+            identifier="origin"
+
+        />
+    )}
+    {destination?.location && (
+        <Marker
+            coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+            }}
+            title="destination"
+            description={destination.description}
+            identifier="destination"
+
+        />
+    )}
+    </MapView>: <MapView style={{ width:"100%", height: "100%"}}/>
+    }
+    </Box>
   
   );
 };
