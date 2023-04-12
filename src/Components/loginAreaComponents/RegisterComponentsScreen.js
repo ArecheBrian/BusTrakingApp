@@ -22,13 +22,13 @@ const RegisterForm = () => {
     const [userEmail, setEmail] = useState('')
     const [userPassword, setPassword] = useState('')
     const [full_name, setFull_name] = useState('')
-   
+    const rol = "user"
     return (
         <VStack flex={4} justifyContent={"space-evenly"} w={"full"}>
             <Input onChangeText={value => setFull_name(value)} placeholder="Full Name" fontSize={"lg"} p={4} variant="rounded" bg={"coolGray.200"} borderColor={"muted.200"}/>
             <Input onChangeText={value => setEmail(value)} placeholder="Email" fontSize={"lg"} p={4} variant="rounded" bg={"coolGray.200"} borderColor={"muted.200"}/>
             <Input type="password" onChangeText={value => setPassword(value)} placeholder="Password" fontSize={"lg"} p={4} variant="rounded" bg={"coolGray.200"} borderColor={"muted.200"}/>
-            <Button onPress={()=> signUpWithEmail({userEmail, userPassword})} alignSelf={"center"} mt={4} w={"56"} h={"12"} borderRadius={25} bg={"gray.800"}><Heading color={"white"} size={"md"}>Sign Up</Heading></Button>
+            <Button onPress={()=> signUpWithEmail({userEmail, userPassword, options: {data: {full_name, rol}}})} alignSelf={"center"} mt={4} w={"56"} h={"12"} borderRadius={25} bg={"gray.800"}><Heading color={"white"} size={"md"}>Sign Up</Heading></Button>
         </VStack>
     )
 }

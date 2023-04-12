@@ -17,7 +17,7 @@ export const Scanner=()=> {
                 </Center>
                 <VStack height={"80%"} space={5} alignItems={"center"} justifyContent={"center"}>
                     <VStack space={1} alignItems={"center"}>
-                        <Heading color='white' size={"lg"} fontWeight={"bold"}>Scan Your Tickets Now !!</Heading>
+                        <Heading color='white' size={"lg"} fontWeight={"bold"}>Scan Your Tickets Now</Heading>
                     </VStack>
                     <MaterialCommunityIcons color='white' name="barcode-scan" size={54} />
                 </VStack>

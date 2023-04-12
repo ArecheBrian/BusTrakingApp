@@ -56,19 +56,7 @@ export const Wallets = () => {
                         </HStack>
                         )
                     })
-                }
-                {/* <FlatList data={WalletsIcons} renderItem={({item})=> 
-                    <HStack h={"12"} justifyContent={"space-between"}>
-                        <HStack space={5} alignItems={"center"}>
-                            <Avatar size="sm" source={{
-                                uri: item.img
-                            }} />
-                            <Text fontWeight={"medium"} fontSize={18} color={"blueGray.700"}>{item.name}</Text>
-                        </HStack>
-                        <Text alignSelf={"center"} fontWeight={"medium"} fontSize={18} color={"blue.600"}>{item.link}</Text>
-                    </HStack>
-                }/> */}
-                
+                }           
             </VStack>
         </Box>
     )
@@ -82,17 +70,17 @@ export const HeadingPay = () => {
         safeAreaTop: true, 
     });
     return (
-        <Box borderBottomRadius={52} h={"80"} bg={"yellow.400"} {...safeAreaProps} px={8}>
+        <Box borderBottomRadius={52} h={"80"} bg={"blueGray.900"} {...safeAreaProps} px={8}>
                 <Center flexDirection={"row"} height={"10"}>
-                    <Center position={"absolute"} left={0} height={"10"}><Ionicons name="md-chevron-back-outline" size={29} color="black" onPress={()=> navigation.navigate("PaymentsHome")} /></Center>
-                    <Heading size={"lg"}>Payments</Heading>
+                    <Center position={"absolute"} left={0} height={"10"}><Ionicons name="md-chevron-back-outline" size={29} color="white" onPress={()=> navigation.navigate("PaymentsHome")} /></Center>
+                    <Heading size={"lg"} color={"white"}>Payments</Heading>
                 </Center>
                 <VStack height={"80%"} space={5} alignItems={"center"} justifyContent={"center"}>
                     <VStack space={1} alignItems={"center"}>
-                        <Heading size={'sm'} fontWeight={"bold"}>My BMTC cash</Heading>
-                        <Heading size={"3xl"} fontWeight={"extrabold"}>₹52</Heading>
+                        <Heading size={'sm'} fontWeight={"bold"} color={"white"}>My BMTC cash</Heading>
+                        <Heading size={"3xl"} fontWeight={"extrabold"} color={"white"}>₹52</Heading>
                     </VStack>
-                    <AntDesign name="pluscircleo" size={45} color={"black"} />
+                    <AntDesign name="pluscircleo" size={45} color={"white"} />
                 </VStack>
          </Box>
     )

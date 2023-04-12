@@ -2,14 +2,14 @@ import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { PlaceRow } from "../SearchComponents/PlaceRow";
 import { Box , VStack , Button , Text } from 'native-base';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setDestination , setOrigin } from '../../Redux/Features/SearchSlice';
 
 
 export const GooglePlaces = () => {
-
+    const state = useSelector((state)=> state.location)
+    const {latitude, longitude} = state.userLocation
     const dispatch = useDispatch();
-
     return (
     <Box>
 
@@ -18,6 +18,7 @@ export const GooglePlaces = () => {
         nearbyPlacesAPI='GooglePlacesSearch'
         returnKeyType={'search'}
         onPress={(data, details = null) => {
+            console.log(details.geometry.location)
             dispatch(
                 setOrigin({
                     location: details.geometry.location,

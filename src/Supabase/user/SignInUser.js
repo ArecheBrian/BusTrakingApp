@@ -2,13 +2,10 @@ import { Alert } from "native-base"
 import { supabase } from "../../../lib/supabase"
 
 export async function signInWithEmail() {
-  try {
     const { data,error } = await supabase.auth.signInWithPassword({
-      email: "cedehev670@necktai.com",
+      email: "giseje1114@momoshe.com",
       password: "admin123",
     })
-    return data
-  } catch(error){
-    Alert.alert(error)
-  } 
+    if (data) return data
+    if (error) Alert.alert(error)
 }

@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import 'react-native-url-polyfill/auto'
-import { getRoutes } from "../../Supabase/Maps/getRoutes";
+import { getDRoutes } from "../../Supabase/conducto/getRoute";
 
-export const fetchBusRoutes = createAsyncThunk(
-    "Routes/ussers",
-    async()=> {
+export const fetchBusDriRouts = createAsyncThunk(
+    "DRoutes/ussers",
+    async(id)=> {
         try {
-            const Rutas = await getRoutes()
-            if (Rutas) return Rutas
+            const Stops = await getDRoutes(id)
+            if (Stops) return Stops[0]
         } catch(error){
             console.log("error fetching products", err, err.message);
         } 
@@ -16,21 +16,21 @@ export const fetchBusRoutes = createAsyncThunk(
 const initialState = {
     routesData: null, status: 'idle' // 'pending' // 'failed' // 'success' 
 }
-const routeSlice = createSlice({
-    name: "routeSlice",
+const driverRSclice = createSlice({
+    name: "driverRSclice",
     initialState,
     extraReducers(builder) {
         builder
-          .addCase(fetchBusRoutes.fulfilled, (state, action) => {
+          .addCase(fetchBusDriRouts.fulfilled, (state, action) => {
             state.routesData = action.payload;
             state.status = "success";
           })
-          .addCase(fetchBusRoutes.pending, (state, action) => {
+          .addCase(fetchBusDriRouts.pending, (state, action) => {
             state.status = "loading";
           })
-          .addCase(fetchBusRoutes.rejected, (state, action) => {
+          .addCase(fetchBusDriRouts.rejected, (state, action) => {
             state.status = "failed";
           });
       },
 })
-export default routeSlice.reducer;
+export default driverRSclice.reducer;

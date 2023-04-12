@@ -13,6 +13,7 @@ export const HomeMap = () => {
     useEffect(()=>{
         dispatch(getLocation())
     },[])
+    console.log(state.userLocation)
     return (
     <Box py="2" w={"90%"} space={2} alignItems="center" flex={6}>
         <Box w="full" py={3}>
@@ -31,13 +32,17 @@ export const HomeMap = () => {
             latitudeDelta: 0.05,
             longitudeDelta: 0.05,
         }}
+        showsUserLocation={true}
+        userLocationPriority={'high'}
+        followsUserLocation={true}
+        userLocationFastestInterval={5000}
         >
-        <Marker coordinate={{latitude: state.userLocation.latitude,longitude:state.userLocation.longitude}}>
+        {/* <Marker coordinate={{latitude: state.userLocation.latitude,longitude:state.userLocation.longitude}}>
             <Pressable h={"10"}  w={"10"} bg={"white"} borderRadius={"full"} alignItems={"center"} justifyContent={"center"}>
                 <MaterialIcons name="location-history" size={35}
                       color="#009EFF" />
             </Pressable>
-        </Marker>
+        </Marker> */}
         </MapView>: <MapView style={{ width:"100%", height: "100%", borderRadius: 20}}/>
         }
         </Box>

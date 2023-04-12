@@ -3,6 +3,7 @@ import { Fontisto } from '@expo/vector-icons';
 import { WelcomeContainer } from '../Components/WelcomeComponents/Components'
 
 export const WelcomeScreen=()=> {
+
   return (
     <Box bg={"blueGray.50"} flex={1}>
       <Box flex={1} safeAreaTop={5}>

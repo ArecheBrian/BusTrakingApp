@@ -1,13 +1,12 @@
-import { Alert } from "native-base";
+import { Alert } from "react-native";
 import { supabase } from "../../../lib/supabase";
 
-export async function signUpWithEmail({userEmail,userPassword}) {
-    try{
+export async function signUpWithEmail({userEmail,userPassword,options}) {
         const { data,error } = await supabase.auth.signUp({
             email: userEmail,
             password: userPassword,
+            options: options 
         })
-    }catch(error){
-        Alert.alert(error.message)
-    }
+        if(error){Alert.alert(error.message)}
+        else { Alert.alert('Success', 'User created successfully')}
   }
