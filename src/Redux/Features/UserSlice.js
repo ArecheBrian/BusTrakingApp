@@ -5,9 +5,10 @@ import { signInWithEmail } from "../../Supabase/user/SignInUser";
 // Definir slice de usuario
 export const userSession = createAsyncThunk(
     "Cookpedia/ussers",
-    async()=> {
+    async({email,password})=> {
         try {
-            const session = await signInWithEmail()
+            const session = await signInWithEmail({email,password})
+            console.log(email, password)
             if (session.session) return session
         } catch(error){
             console.log("error fetching products", err, err.message);

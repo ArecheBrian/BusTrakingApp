@@ -1,4 +1,4 @@
-import {Actionsheet,Box,IconButton,Pressable,useDisclose,HStack,Icon} from "native-base";
+import {Actionsheet,Box,IconButton,Pressable,useDisclose,HStack,Icon, VStack, Text, Divider} from "native-base";
 import { useEffect ,  useState } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
@@ -22,8 +22,8 @@ export const MapScreen = () => {
   const { isOpen, onOpen, onClose } = useDisclose();
   return (
     <>
-      <View style={styles.container}>
-      <Box safeAreaTop bg="blueGray.900" w={"full"}>
+      <Box flex={1}>
+      <Box pt={10} bg="blueGray.900" w={"full"}>
       <HStack bg="blueGray.900" justifyContent={"flex-end"}>
         <IconButton 
           onPress={onOpen}
@@ -57,6 +57,15 @@ export const MapScreen = () => {
             longitudeDelta: 0.05,
           }}
         >
+          {/* {showDirections && 
+          <HStack bg={"white"} p={3} space={3} alignItems={"center"} justifyContent={"center"} w={"48"} mt={2} ml={2}>
+          <Text fontWeight={"bold"}>Independencia</Text>
+          <Divider w={8} h={1} _light={{
+                    bg: "hotpink"
+                  }} _dark={{
+                bg: "hotpink"
+          }} />
+        </HStack>} */}
           {showDirections &&(
             Rstate.routesData.map((item, index)=> {
               return (
@@ -102,20 +111,12 @@ export const MapScreen = () => {
         }
            
         </MapView>
-      </View>
+      </Box>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    
-  },
   map: {
     width: "100%",
     height: "100%",
