@@ -1,34 +1,33 @@
-import { Box, Center, HStack, VStack, Text, Divider, Heading , Avatar , safeAreaProps , useSafeArea , Button} from "native-base"
+import { Box, HStack, VStack, Text, Divider, Heading , ScrollView, Button , Center} from "native-base"
 import { Entypo, FontAwesome, MaterialCommunityIcons, Feather , AntDesign , Ionicons } from '@expo/vector-icons';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { PlaceRow } from "../SearchComponents/PlaceRow";
-import { GooglePlaces, GooglePlaces2 } from "../SearchComponents/GooglePlaces";
+import { GooglePlaces, GooglePlaces2  } from "../SearchComponents/GooglePlaces";
 import { useNavigation } from '@react-navigation/native';
+import { useEffect } from "react";
+import { getLocation } from "../../Redux/Features/LocationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { InputCard } from './GooglePlaces';
 
 export const SearchCard = () => {
+
+  const state = useSelector((state)=> state.location)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getLocation())
+    },[])
+
+
   const navigation = useNavigation();
     return (
-              <Box py={5} >
-                <VStack>
-                    <GooglePlaces/>
-                    <GooglePlaces2/>
-                </VStack>
-                <Box w={2} h={2} backgroundColor={'white'} position={'absolute'} top={10} left={2.5} borderRadius={5} ></Box>
-                <Box w={0.5} h={10} backgroundColor={'white'} position={'absolute'} top={55} left={3} ></Box>
-                <Box w={2} h={2} backgroundColor={'white'} position={'absolute'} top={105} left={2.5}></Box>
-            
-                <VStack pl={2} justifyContent={'flex-start'}  top={125} >
-                  <HStack alignItems={"center"} >
-                       <VStack bg={"gray.400"} p={1} borderRadius={50} mr={15} >
-                         <Entypo name="location-pin" size={24} color="white" />
-                       </VStack>
-                       <Text color={"white"} bold fontSize={15}>Current Location</Text>
-                  </HStack>
-                </VStack>
-                <VStack alignItems={"center"}  top={135}>
+              <Box top={5} >
+                <Box alignItems={'center'} >
+                 <InputCard/>
+                </Box>
+                <VStack alignItems={"center"}  top={35}>
                     <Button onPress={()=> navigation.navigate("SearchMap")} size={"sm"} borderRadius={30} bg={"white"}><Text color={"blueGray.900"} fontSize={15}>Trace Route</Text></Button>
                 </VStack>
-                <Box top={165}>
+                <Box top={65}>
                         <Divider  color={"gray.400"} />
                     </Box>
               </Box>
