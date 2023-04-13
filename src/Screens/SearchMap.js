@@ -28,7 +28,8 @@ export const SearchMap = () => {
 
   return (
 
-    <Box flex={1} w="full" overflow={"hidden"} rounded="3xl">
+    <Box flex={1} w="full" overflow={"hidden"}>
+      <Top/>
         {state.status === "success"?
     <MapView ref={mapRef} style={styles.map}
     region={{
@@ -38,7 +39,6 @@ export const SearchMap = () => {
         longitudeDelta: 0.05,
     }}
     showsUserLocation={true}
-    userLocationPriority={'high'}
     followsUserLocation={true}
     userLocationFastestInterval={5000}
     >
@@ -46,7 +46,6 @@ export const SearchMap = () => {
 {state.userLocation && destination && (
 
         <MapViewDirections
-        ma
             origin={state.userLocation}
             destination={destination.description}
             apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}

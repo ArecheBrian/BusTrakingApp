@@ -20,3 +20,20 @@ export function Top() {
     </Box>
   );
 }
+
+export function TopSearch() {
+  const navigation = useNavigation();
+return (
+  <Box w={"full"}>
+    <HStack  bg="blueGray.900" justifyContent={"space-between"}>
+      <IconButton
+        icon={<Icon size="xl" as={AntDesign} name="leftcircleo" color="white" />}
+        onPress={() => navigation.navigate("Home")}
+        />
+      <IconButton
+      />
+    </HStack>
+  </Box>
+);
+}
+

@@ -17,9 +17,10 @@ export const SearchCard = () => {
         dispatch(getLocation())
     },[])
 
+
   const navigation = useNavigation();
     return (
-              <Box >
+              <Box top={5} >
                 <Box alignItems={'center'} >
                  <InputCard/>
                 </Box>
