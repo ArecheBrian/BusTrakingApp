@@ -57,6 +57,7 @@ const ConductorScreens = () =>{
             return <FontAwesome5 name="map-marked-alt" size={24} color={color} />
           }
         }} />
+        
          
     </Tabs.Navigator>
   );
@@ -107,6 +108,7 @@ const MyTabs = () => {
             return <MaterialCommunityIcons name="qrcode-scan" size={24} color={color} />
           }
         }} />
+
     </Tabs.Navigator>
   );
 };
