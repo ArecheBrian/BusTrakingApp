@@ -1,4 +1,4 @@
-import {Actionsheet,Box,IconButton,Pressable,useDisclose,HStack,Icon, Image} from "native-base";
+import {Actionsheet,Box,IconButton,Pressable,useDisclose,HStack,Icon, Image, Button} from "native-base";
 import { useEffect ,  useState } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
@@ -9,13 +9,19 @@ import * as Location from "expo-location"
 import { IconsImg } from "../Assets/icons";
 import { getLocation } from "../Redux/Features/LocationSlice";
 import { fetchBusStops } from "../Redux/Features/StopsSlice";
+import { updateTable } from "../Supabase/conducto/getLocation";
 
 export const DriverMapScreen = () => {
   const state = useSelector((state)=> state.profile)
   const Rstate = useSelector((state)=> state.driverR)
   const Lstate = useSelector((state)=> state.location)
   const Sstate = useSelector((state)=> state.stops)
-    const [busS, setBus] = useState(null)
+  const [busS, setBus] = useState(null)
+
+  useEffect(()=>{
+    updateTable(busS)
+  },[busS])
+
     const getLocationUpdate = async ()=>{
       let {status} = await Location.requestForegroundPermissionsAsync();
       if(status !== 'granted') {
@@ -24,7 +30,7 @@ export const DriverMapScreen = () => {
       }
       const location = await Location.watchPositionAsync({accuracy: Location.Accuracy.BestForNavigation, timeInterval: 3000, distanceInterval: 10}, (location)=>{
         const { latitude,longitude} = location.coords
-        console.log(latitude,longitude)
+        // console.log(latitude,longitude)
         setBus({latitude, longitude})
       })
     }

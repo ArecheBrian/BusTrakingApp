@@ -1,28 +1,40 @@
-import { Box, Actionsheet, IconButton, Heading, HStack, StatusBar, useDisclose, Icon, Text, ScrollView, VStack, Divider, ZStack, Pressable } from "native-base"
+import { Box, Actionsheet, IconButton, Heading, HStack, StatusBar, useDisclose, Icon, Text, ScrollView, VStack, Divider, ZStack, Pressable, Image } from "native-base"
 import { Feather } from '@expo/vector-icons';
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
-import { Dimensions } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import MapViewDirections from "react-native-maps-directions";
 import { useEffect, useState } from "react";
-import * as Location from "expo-location"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusStops } from "../Redux/Features/StopsSlice";
-
-// importante de aprender 
-// Dimensions.get("screen").height
+import { supabase } from "../../lib/supabase";
+import { IconsImg } from "../Assets/icons";
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
 export const RoutesInfoScreen =({route})=> {
+  const navigation = useNavigation()
+  const { origen, destino, id, name } = route.params;
   const state = useSelector((state)=> state.stops)
   const dispatch = useDispatch()
-
+  const [driver, setDriver] = useState(origen)
+  const getDriverLocation =async()=>{
+    const bus = supabase.channel('custom-all-channel')
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'bus' },
+      (payload) => {
+         const driverL = payload.new.coordenadas
+         setDriver(driverL)
+      }
+    )
+    .subscribe()
+  }
+  getDriverLocation()
   useEffect(()=>{
     dispatch(fetchBusStops())
   },[])
   const { isOpen, onOpen, onClose} = useDisclose()
-  const { origen, destino, id, name } = route.params;
-  const [time, setTime] = useState(null)
   const waypoints = {latitude:18.4732594673046 , longitude: -69.852133474418}
     return (
         <Box flex={1} bg={"blueGray.500"}>
@@ -30,7 +42,9 @@ export const RoutesInfoScreen =({route})=> {
                 <StatusBar bg="#3700B3" barStyle="light-content" />
                 <Box safeAreaTop bg="blueGray.900"/>
                 <HStack h={"16"} bg="blueGray.900" justifyContent={"space-between"} px={"3"}>
-                    <Heading color="white" alignSelf={"center"}>MyBMTC</Heading>
+                    <IconButton
+                    icon={<Icon size={"2xl"} as={Ionicons} name="ios-chevron-back-outline" color="white" />}
+                    onPress={()=> navigation.navigate("RoutesL")}/>
                     <IconButton
                     icon={<Icon size={"2xl"} as={Feather} name="info" color="white" />}
                     onPress={onOpen}/>
@@ -39,34 +53,33 @@ export const RoutesInfoScreen =({route})=> {
           <View style={styles.container}>
           <MapView style={styles.map}
             region={{
-                latitude: 18.486057,
-                longitude: -69.931211,
+                latitude: driver.latitude,
+                longitude: driver.longitude,
                 latitudeDelta: 0.05,
                 longitudeDelta: 0.05,
             }}>
-               {/* <MapViewDirections
+               <MapViewDirections
                   origin={origen}
                   destination={waypoints}
                   strokeWidth={3}
-                  strokeColor="hotpink"
+                  strokeColor="#2F58CD"
                   apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
                   mode={"TRANSIT"}
-                /> */}
-                {/* <MapViewDirections
+                />
+                <MapViewDirections
                   origin={waypoints}
                   destination={destino}
                   strokeWidth={3}
-                  strokeColor="hotpink"
+                  strokeColor="#2F58CD"
                   apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
                   mode={"TRANSIT"}
-                /> */}
+                />
                 
                 {
                   state.status === "success" && 
                     state.stopsData.map((item,index)=>{
                       if (item.ruta_id === id){
                         return(
-                          <>
                           <Marker
                           key={index}
                           title={item.name}
@@ -75,32 +88,21 @@ export const RoutesInfoScreen =({route})=> {
                           <Pressable
                             h={"3"}
                             w={"3"}
-                            bg={"hotpink"}
+                            bg={"#2F58CD"}
                             borderRadius={"full"}
                           >
                           </Pressable>
                         </Marker>
-                        <MapViewDirections
-                          origin={origen}
-                          destination={{ latitude: item.lat, longitude: item.lng}}
-                          strokeWidth={3}
-                          strokeColor="hotpink"
-                          apikey={"AIzaSyC-T865UIZxMwsH_dySj6QQ4uXB2q4zSB4"}
-                          mode={"TRANSIT"}
-                          resetOnChange={true}
-                          onReady={result => {
-                            setTime(result.duration)
-                          }}
-                />
-                </>
                         )
                       }
                     })
                 }
-                
-                {/* <Marker
-                  coordinate={bus}
-                /> */}
+                  <Marker coordinate={driver}>
+                    <Image source={IconsImg.BusIcon} alt="Alternate Text"
+                    resizeMode="contain"
+                    width={12}
+                    height={12}/>
+                  </Marker>
             </MapView>
             </View>
               <Actionsheet isOpen={isOpen} onClose={onClose} disableOverlay>

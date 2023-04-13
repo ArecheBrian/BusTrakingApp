@@ -21,6 +21,9 @@ export const SignIn = ()=> {
 }
 
 const SignInForm = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    
     const dispatch = useDispatch()
     return (
         <VStack flex={2} space={10} w={"full"} justifyContent={"center"}>
@@ -35,7 +38,7 @@ const SignInForm = () => {
                     Forget Password
                 </Link>
             </FormControl>
-            <Button onPress={()=> dispatch(userSession())} alignSelf={"center"} mt={4} w={"56"} h={"12"} borderRadius={25} bg={"gray.800"}><Heading color={"white"} size={"md"}>Sign Up</Heading></Button>
+            <Button onPress={()=> dispatch(userSession({email,password}))} alignSelf={"center"} mt={4} w={"56"} h={"12"} borderRadius={25} bg={"gray.800"}><Heading color={"white"} size={"md"}>Sign Up</Heading></Button>
         </VStack>
     )
 }
