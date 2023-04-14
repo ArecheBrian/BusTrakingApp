@@ -30,10 +30,18 @@ export const RoutesInfoScreen =({route})=> {
     )
     .subscribe()
   }
+  const getFLocation =async() =>{
+    let { data, error } = await supabase
+    .from('bus')
+    .select('coordenadas').eq("id", id)
+    setDriver(data[0].coordenadas)
+  }
   getDriverLocation()
   useEffect(()=>{
     dispatch(fetchBusStops())
+    getFLocation()
   },[])
+
   const { isOpen, onOpen, onClose} = useDisclose()
   const waypoints = {latitude:18.4732594673046 , longitude: -69.852133474418}
     return (
@@ -53,8 +61,8 @@ export const RoutesInfoScreen =({route})=> {
           <View style={styles.container}>
           <MapView style={styles.map}
             region={{
-                latitude: driver.latitude,
-                longitude: driver.longitude,
+                latitude: driver?.latitude,
+                longitude: driver?.longitude,
                 latitudeDelta: 0.05,
                 longitudeDelta: 0.05,
             }}>

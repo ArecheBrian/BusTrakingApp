@@ -14,7 +14,7 @@ import { WelcomeScreen } from "../Screens/WelcomeScreen";
 import { RegisterScreen } from "../Screens/RegisterScreen";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../../lib/supabase";
-import { MaterialCommunityIcons,Entypo,AntDesign,Feather,MaterialIcons,resetSlice,FontAwesome5  } from "@expo/vector-icons";
+import { MaterialCommunityIcons,Entypo,AntDesign,Feather,MaterialIcons,FontAwesome5,FontAwesome  } from "@expo/vector-icons";
 import { SearchBar }  from './../Screens/SearchBar';
 import { AddcardScreen } from "../Screens/AddcardScreen";
 import { PaymentScreen } from "../Screens/PaymentScreen";
@@ -25,6 +25,8 @@ import { getUserProfile } from "../Redux/Features/ProfileSlice";
 import { ScannerScreen } from "../Screens/ScannerScreen"
 import { DriverMapScreen } from "../Screens/DriverMapScreen";
 import { TicketScreen } from "../Screens/TicketScreen";
+import { resetSlice } from "../Redux/Features/UserSlice";
+import { DriverProfileScreen } from "../Screens/DriverProfileScreen";
 
 const ConductorScreens = () =>{
   const Tabs = createMaterialBottomTabNavigator();
@@ -57,7 +59,14 @@ const ConductorScreens = () =>{
             return <FontAwesome5 name="map-marked-alt" size={24} color={color} />
           }
         }} />
-        
+        <Tabs.Screen 
+        name="Scanner2" 
+        component={DriverProfileScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <FontAwesome name="drivers-license" size={24} color={color} />
+          }
+        }} />
          
     </Tabs.Navigator>
   );
@@ -102,7 +111,7 @@ const MyTabs = () => {
         }} />
         <Tabs.Screen 
         name="Ticket" 
-        component={TicketScreen}
+        component={SaldoNavigation}
         options={{
           tabBarIcon: ({color}) => {
             return <MaterialCommunityIcons name="qrcode-scan" size={24} color={color} />
@@ -127,7 +136,6 @@ function CustomDrawerContent(props) {
   const dispatch = useDispatch();
   const state = useSelector((state)=> state.Users)
   const logOutHandler = async () => {
-    const { data, error } = await supabase.auth.signOut();
     dispatch(resetSlice());
   };
 
@@ -178,13 +186,16 @@ function CustomDrawerContent(props) {
         onPress={() => {props.navigation.navigate('Aboutus')}}
       />
         </VStack>
-        <Box bg={"white"} h={"96"} justifyContent={"center"}>
-      <DrawerItem
-        labelStyle={{ marginLeft: -18 }}
-        icon={() => <MaterialIcons name="logout" size={24} color="black" />}
-        label="Log Out"
-        onPress={() => logOutHandler()}
-      />
+        <Box bg={"white"} justifyContent={"center"}>
+          <DrawerItem
+            labelStyle={{ marginLeft: -18 }}
+            icon={() => <MaterialIcons name="logout" size={24} color="black" />}
+            label="Log Out"
+            onPress={() => logOutHandler()}
+          />
+        </Box>
+        <Box bg={"white"} justifyContent={"center"} h={"64"}>
+
         </Box>
     </DrawerContentScrollView>
   );
@@ -193,7 +204,18 @@ const PaymentsNavigation = () => {
   const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator initialRouteName="PaymentsHome">
+      <Stack.Screen name="Qr" options={{ headerShown: false }} component={TicketScreen}/>
       <Stack.Screen name="PaymentsHome" options={{ headerShown: false }} component={AccountScreen}/>
+      <Stack.Screen name="cards" options={{ headerShown: false }} component={PaymentScreen}/>
+      <Stack.Screen name="addcards" options={{ headerShown: false }} component={AddcardScreen}/>
+    </Stack.Navigator>
+  )
+}
+const SaldoNavigation = () => {
+  const Stack = createNativeStackNavigator()
+  return (
+    <Stack.Navigator initialRouteName="PaymentsHome">
+      <Stack.Screen name="PaymentsHome" options={{ headerShown: false }} component={TicketScreen}/>
       <Stack.Screen name="cards" options={{ headerShown: false }} component={PaymentScreen}/>
       <Stack.Screen name="addcards" options={{ headerShown: false }} component={AddcardScreen}/>
     </Stack.Navigator>

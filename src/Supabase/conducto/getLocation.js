@@ -5,4 +5,4 @@ export const updateTable = async (busS) => {
     .from('bus')
     .update({ coordenadas: busS})
       .match({ id: 2 })
-  }
+}

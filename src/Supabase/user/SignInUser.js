@@ -12,3 +12,5 @@ export async function signInWithEmail({email,password}) {
 
 // giseje1114@momoshe.com
 // admin123
+
+18.48525609120456, -69.82678039731455

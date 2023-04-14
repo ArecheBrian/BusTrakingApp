@@ -6,7 +6,7 @@ export const WalletsIcons = [
     },
     {
         name: "Phonepay",
-        img: "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.6435-9/43447413_1987166791348029_9209894455249731584_n.png?stp=dst-png_p320x320&_nc_cat=105&ccb=1-7&_nc_sid=7aed08&_nc_ohc=f3pDzZmhEt4AX88J1cQ&_nc_ht=scontent-sjc3-1.xx&oh=00_AfBMr9_W7VnxEL65v_Pz67sxk6trv-gV24GR6p_XUmMyFg&oe=642E2284",
+        img: "https://play-lh.googleusercontent.com/6iyA2zVz5PyyMjK5SIxdUhrb7oh9cYVXJ93q6DZkmx07Er1o90PXYeo6mzL4VC2Gj9s",
         link: "Link"
     },
     {

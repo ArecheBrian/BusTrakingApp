@@ -2,6 +2,9 @@ import { Box, Center, HStack, VStack, Text, Heading , Avatar , useSafeArea, Scro
 import { MaterialCommunityIcons,  AntDesign , Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { WalletsIcons } from "./dtbTest";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { supabase } from "../../../lib/supabase";
 
 
 const CreditCardSession = () => {
@@ -64,8 +67,19 @@ export const Wallets = () => {
 
 export const HeadingPay = () => {
     const navigation = useNavigation();
-
-
+    const state = useSelector((state)=> state.profile)
+    const id = state.profileData[0].id
+    const [saldo, setSaldo] = useState("0")
+    const getSaldo = async()=>{
+        let { data, error } = await supabase
+        .from('carteras')
+        .select('saldo').eq('id', id)
+         setSaldo(data[0].saldo)
+    }
+    useEffect(()=>{
+        getSaldo()
+    },[])
+    
     const safeAreaProps = useSafeArea ({
         safeAreaTop: true, 
     });
@@ -78,7 +92,7 @@ export const HeadingPay = () => {
                 <VStack height={"80%"} space={5} alignItems={"center"} justifyContent={"center"}>
                     <VStack space={1} alignItems={"center"}>
                         <Heading size={'sm'} fontWeight={"bold"} color={"white"}>My BMTC cash</Heading>
-                        <Heading size={"3xl"} fontWeight={"extrabold"} color={"white"}>₹52</Heading>
+                        <Heading size={"3xl"} fontWeight={"extrabold"} color={"white"}>${saldo}</Heading>
                     </VStack>
                     <AntDesign name="pluscircleo" size={45} color={"white"} />
                 </VStack>

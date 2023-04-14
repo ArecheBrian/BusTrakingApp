@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, Button } from 'react-native';
+import { Text, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Box } from "native-base";
 import { Scanner } from '../Components/ScannerComponents/ScannerComponents';
+import { updateSaldo } from '../Supabase/saldo/updateSaldo';
+
 
 export  const ScannerScreen = () => {
-
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState('Scanner Results')
@@ -16,16 +17,17 @@ export  const ScannerScreen = () => {
       setHasPermission(status === 'granted');
     })()
   }
-
+  const id = "40ada8ca-c8d7-46e3-9ce5-34ed775c9ae2"
   // Request Camera Permission
   useEffect(() => {
     askForCameraPermission();
   }, []);
-
   // What happens when we scan the bar code
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setText(data)
+    const saldo = data - 10
+    data < 10? Alert.alert("Saldo insuficinete"):updateSaldo(saldo,id)
     console.log('Type: ' + type + '\nData: ' + data)
   };
 

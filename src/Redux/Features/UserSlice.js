@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import 'react-native-url-polyfill/auto'
 import { signInWithEmail } from "../../Supabase/user/SignInUser";
+import { Alert } from "react-native";
 
 // Definir slice de usuario
 export const userSession = createAsyncThunk(
@@ -8,7 +9,7 @@ export const userSession = createAsyncThunk(
     async({email,password})=> {
         try {
             const session = await signInWithEmail({email,password})
-            console.log(email, password)
+            if (!session.session) return Alert.alert("Usuario inexistente")
             if (session.session) return session
         } catch(error){
             console.log("error fetching products", err, err.message);
