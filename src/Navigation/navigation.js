@@ -27,6 +27,7 @@ import { DriverMapScreen } from "../Screens/DriverMapScreen";
 import { TicketScreen } from "../Screens/TicketScreen";
 import { resetSlice } from "../Redux/Features/UserSlice";
 import { DriverProfileScreen } from "../Screens/DriverProfileScreen";
+import { AddSaldoScreen } from "../Screens/AddSaldoScreen";
 
 const ConductorScreens = () =>{
   const Tabs = createMaterialBottomTabNavigator();
@@ -142,18 +143,6 @@ function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props} >
         <VStack bg={"blueGray.900"} p={6}>
-          <HStack>
-              <Avatar
-                size="xl"
-                bg="green.500"
-                source={{
-                  uri: "https://media.licdn.com/dms/image/D4E03AQEAcEhwmNPgvw/profile-displayphoto-shrink_800_800/0/1670947325218?e=2147483647&v=beta&t=MfoJmHfzb9S7uNKmK9PDOSAWiqUuC5Ab98dWgvH0IDQ",
-                }}
-              ></Avatar>
-            <Box  pl={"24"}>
-              <Feather name="edit-2" size={24} color="white" />
-            </Box>
-          </HStack>
           <Text fontWeight="bold" fontSize="2xl" color="white">
             {state.session.session.user.user_metadata.full_name}
           </Text>
@@ -194,7 +183,7 @@ function CustomDrawerContent(props) {
             onPress={() => logOutHandler()}
           />
         </Box>
-        <Box bg={"white"} justifyContent={"center"} h={"64"}>
+        <Box bg={"white"} justifyContent={"center"} h={"80"}>
 
         </Box>
     </DrawerContentScrollView>
@@ -208,6 +197,7 @@ const PaymentsNavigation = () => {
       <Stack.Screen name="PaymentsHome" options={{ headerShown: false }} component={AccountScreen}/>
       <Stack.Screen name="cards" options={{ headerShown: false }} component={PaymentScreen}/>
       <Stack.Screen name="addcards" options={{ headerShown: false }} component={AddcardScreen}/>
+      <Stack.Screen name="addSaldo" options={{ headerShown: false }} component={AddSaldoScreen}/>
     </Stack.Navigator>
   )
 }
@@ -218,6 +208,7 @@ const SaldoNavigation = () => {
       <Stack.Screen name="PaymentsHome" options={{ headerShown: false }} component={TicketScreen}/>
       <Stack.Screen name="cards" options={{ headerShown: false }} component={PaymentScreen}/>
       <Stack.Screen name="addcards" options={{ headerShown: false }} component={AddcardScreen}/>
+      <Stack.Screen name="addSaldo" options={{ title: "Agregar Saldo"}} component={AddSaldoScreen}/>
     </Stack.Navigator>
   )
 }

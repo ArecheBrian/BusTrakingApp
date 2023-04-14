@@ -76,6 +76,18 @@ export const HeadingPay = () => {
         .select('saldo').eq('id', id)
          setSaldo(data[0].saldo)
     }
+    const getUpdateSaldo =async ()=>{
+        const carteras = supabase.channel('custom-filter-channel')
+        .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'carteras', filter: `id=eq.${id}` },
+        (payload) => {
+            setSaldo(payload.new.saldo)
+        }
+        )
+        .subscribe()
+    }
+    getUpdateSaldo()
     useEffect(()=>{
         getSaldo()
     },[])
@@ -94,7 +106,7 @@ export const HeadingPay = () => {
                         <Heading size={'sm'} fontWeight={"bold"} color={"white"}>My BMTC cash</Heading>
                         <Heading size={"3xl"} fontWeight={"extrabold"} color={"white"}>${saldo}</Heading>
                     </VStack>
-                    <AntDesign name="pluscircleo" size={45} color={"white"} />
+                    <AntDesign name="pluscircleo" size={45} color={"white"} onPress={()=> navigation.navigate("addSaldo")} />
                 </VStack>
          </Box>
     )

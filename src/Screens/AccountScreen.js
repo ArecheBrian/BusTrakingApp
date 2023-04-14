@@ -18,7 +18,7 @@ export const AccountScreen = () => {
   };
     return (
       <Box flex={1} bg={"blueGray.900"} {...safeAreaProps}>
-         <Box w={"full"} h={10} bbg={"blueGray.900"}>
+         <Box w={"full"} h={"24"} bbg={"blueGray.900"}>
          <Box flexDirection={"row"} w={'full'} justifyContent={"space-around"}>
           <Box pt={5} >
             <Ionicons name="md-chevron-back-outline" size={24} color="white" onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
@@ -32,10 +32,6 @@ export const AccountScreen = () => {
           </Box>
          </Box>
          </Box>
-          <Avatar source={{
-            uri: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"}} h={90} w={90} position={"relative"} zIndex={2} alignSelf={"center"} top={12} >
-            <Avatar.Badge />
-          </Avatar>
          <Center space={5} bg={"blueGray.50"} flex={1}>
           <VStack h={"70%"} w={"80%"} space={5} mt={5}>
             <HStack space={4} alignItems={"center"}>
